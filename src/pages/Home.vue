@@ -5,7 +5,8 @@
       <button @click="showModal">모달 열기</button>
       <ModalComponents :visible="isModalVisible" @close-modal="hideModal" />
       <TotalExpenses />
-
+      <br />
+      <TotalIncomes />
       <ShowList />
     </div>
     <AddButton class="addbutton-container" />
@@ -19,6 +20,7 @@ import { ref } from 'vue';
 import ModalComponents from '@/components/Modal.vue';
 import ShowList from '@/components/ShowList.vue';
 import TotalExpenses from '@/components/TotalExpenses.vue';
+import TotalIncomes from '@/components/TotalIncomes.vue';
 
 const isModalVisible = ref(false);
 

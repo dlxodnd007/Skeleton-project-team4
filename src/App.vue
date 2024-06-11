@@ -4,19 +4,15 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <template>
   <div id="app">
-    <router-link to="/">Home</router-link>
-    <HomePage />
+    <router-link to="/profile">Profile</router-link>
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script>
-import HomePage from '@/pages/HomePage.vue';
-
 export default {
   name: 'App',
-  components: {
-    HomePage,
-  },
+  components: {},
 };
 </script>
 

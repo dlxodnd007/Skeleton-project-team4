@@ -13,14 +13,9 @@
 <script setup>
 import AddButton from '@/components/AddButton.vue';
 import UserProfile from '@/components/UserProfile.vue';
-</script>
-<style scoped></style>
-
-<script setup>
 import { ref } from 'vue';
 import ModalComponents from '@/components/Modal.vue';
 import ShowList from '@/components/ShowList.vue';
-ShowList;
 
 const isModalVisible = ref(false);
 

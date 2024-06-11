@@ -9,6 +9,7 @@ import Footer from '@/components/Footer.vue';
     <Footer class="footer" />
   </div>
 </template>
+
 <style scoped>
 .footer {
   position: absolute;

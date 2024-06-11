@@ -1,6 +1,6 @@
 <template>
   <div class="modal-overlay" v-if="visible">
-    <div class="modal">
+    <div class="modale">
       <div class="modal-content">
         <div>
           <h1>내역 추가</h1>
@@ -147,7 +147,7 @@ fetchList();
   align-items: center;
 }
 
-.modal {
+.modale {
   background: white;
   padding: 20px;
   border-radius: 5px;

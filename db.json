@@ -13,34 +13,31 @@
       "date": "2024-06-03",
       "amount": 500000,
       "description": "월급",
-      "id": "23c4"
+      "id": "ac89"
     },
     {
       "date": "2024-06-01",
       "amount": 300000,
       "description": "용돈",
-      "id": "1da5"
+      "id": "c47f"
     },
     {
-      "id": "a1df",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
-    },
-    {
-      "id": "f871",
+      "id": "f3cb",
       "date": "2024-06-13",
-      "category": "생활비",
-      "description": "ㅌㅌ",
-      "amount": "1000"
+      "description": "용돈",
+      "amount": 50000
     },
     {
-      "id": "3f3b",
-      "date": "2024-06-30",
-      "category": "생활비",
-      "description": "테스트",
-      "amount": "1000"
+      "id": "bf7f",
+      "date": "2024-06-14",
+      "description": "용돈",
+      "amount": 50000
+    },
+    {
+      "id": "35fc",
+      "date": "2024-06-13",
+      "description": "로또",
+      "amount": 50000
     }
   ],
   "expenses": [
@@ -49,119 +46,105 @@
       "amount": 34000,
       "category": "식비",
       "description": "배민-닭발",
-      "id": "62d9"
+      "id": "1e5d"
     },
     {
       "date": "2024-06-03",
       "amount": 100000,
       "category": "적금",
       "description": "주택청약",
-      "id": "af30"
+      "id": "188c"
     },
     {
       "date": "2024-06-04",
       "amount": 5500,
       "category": "식비",
       "description": "세종대 학식",
-      "id": "001f"
+      "id": "e2b1"
     },
     {
       "date": "2024-06-04",
       "amount": 45000,
       "category": "식비",
       "description": "마왕족발",
-      "id": "1b90"
+      "id": "8bed"
     },
     {
       "date": "2024-06-05",
       "amount": 6000,
       "category": "식비",
       "description": "세종대 학식",
-      "id": "1798"
+      "id": "fdef"
     },
     {
       "date": "2024-06-07",
       "amount": 18000,
       "category": "식비",
       "description": "은혜즉석떡볶이",
-      "id": "574a"
+      "id": "85b9"
     },
     {
       "date": "2024-06-07",
       "amount": 36000,
       "category": "쇼핑",
       "description": "아트박스-생일선물",
-      "id": "d45b"
+      "id": "6158"
     },
     {
       "date": "2024-06-08",
       "amount": 25000,
       "category": "쇼핑",
       "description": "다이소-이것저것",
-      "id": "561a"
+      "id": "5e07"
     },
     {
       "date": "2024-06-10",
       "amount": 62000,
       "category": "교통비",
       "description": "기후동행카드 충전",
-      "id": "1594"
+      "id": "ef5e"
     },
     {
       "date": "2024-06-10",
       "amount": 40000,
       "category": "식비",
       "description": "신사골 감자탕",
-      "id": "c6d9"
+      "id": "4a2a"
     },
     {
       "date": "2024-06-11",
       "amount": 76000,
       "category": "식비",
       "description": "홈플러스 장보기",
-      "id": "8e2c"
+      "id": "b713"
     },
     {
-      "id": "9046",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
+      "id": "a90a",
+      "date": "2024-06-12",
+      "category": "식비",
+      "description": "아메리카노",
+      "amount": 10000
     },
     {
-      "id": "98ff",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
+      "id": "64f9",
+      "date": "2024-06-12",
+      "category": "식비",
+      "description": "밥",
+      "amount": 5000
     },
     {
-      "id": "4583",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
+      "id": "322d",
+      "date": "2024-06-13",
+      "category": "식비",
+      "description": "점심",
+      "amount": 10000
     },
     {
-      "id": "3b3e",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
-    },
-    {
-      "id": "d233",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
-    },
-    {
-      "id": "be11",
-      "date": "",
-      "category": "",
-      "description": "",
-      "amount": 0
+      "id": "163c",
+      "date": "2024-06-15",
+      "category": "식비",
+      "description": "점심추천",
+      "amount": 60000
     }
   ]
 }

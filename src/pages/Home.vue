@@ -3,7 +3,7 @@
         <button @click="showModal">모달 열기</button>
         <ModalComponents :visible="isModalVisible" @close-modal="hideModal">
         </ModalComponents>
-        <!-- <ShowList /> -->
+        <ShowList />
     </div>
 </template>
 
@@ -11,7 +11,6 @@
 import { ref } from "vue";
 import ModalComponents from "@/components/Modal.vue";
 import ShowList from "@/components/ShowList.vue";
-ShowList;
 
 const isModalVisible = ref(false);
 

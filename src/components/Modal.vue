@@ -77,54 +77,59 @@ function sendClose() {
 }
 
 async function sendComfirm() {
-  console.log(date.value);
-  console.log(category.value);
-  console.log(description.value);
-  console.log(amount.value);
-  console.log(picked.value);
-  // emit("date");
-  if (picked.value === 'income') {
-    const url = 'http://localhost:3000/income';
-    const user_income = await axios.get(url);
-    console.log('user_income', user_income);
-    try {
-      const newData = {
-        date: date.value,
-        category: category.value,
-        description: description.value,
-        amount: amount.value,
-      };
-      const addData = await axios.post(url, newData);
+  // console.log(date.value);
+  // console.log(category.value);
+  // console.log(description.value);
+  // console.log(amount.value);
+  // console.log(picked.value);
 
-      if (addData.status !== 201) return alert('저장 실패');
+  if (date.value !== '' && description.value !== '' && amount.value !== 0) {
+    if (picked.value === 'income') {
+      // emit("date");
+      const url = 'http://localhost:3000/income';
+      const user_income = await axios.get(url);
+      console.log('user_income', user_income);
+      try {
+        const newData = {
+          date: date.value,
+          // category: category.value,
+          description: description.value,
+          amount: Number(amount.value),
+        };
+        const addData = await axios.post(url, newData);
 
-      fetchList();
-    } catch (error) {
-      alert('작업 중, ERR 발생');
-      console.log(error);
+        if (addData.status !== 201) return alert('저장 실패');
+
+        fetchList();
+      } catch (error) {
+        alert('작업 중, ERR 발생');
+        console.log(error);
+      }
+    } else if (picked.value !== 'income') {
+      const url = 'http://localhost:3000/expenses';
+      const user_expenses = await axios.get(url);
+      console.log('user_expenses', user_expenses);
+      try {
+        const newData = {
+          date: date.value,
+          category: category.value,
+          description: description.value,
+          amount: Number(amount.value),
+        };
+        const addData = await axios.post(url, newData);
+
+        if (addData.status !== 201) return alert('저장 실패');
+
+        fetchList();
+      } catch (error) {
+        alert('작업 중, ERR 발생');
+        console.log(error);
+      }
     }
-  } else if (picked.value !== 'income') {
-    const url = 'http://localhost:3000/expenses';
-    const user_expenses = await axios.get(url);
-    console.log('user_expenses', user_expenses);
-    try {
-      const newData = {
-        date: date.value,
-        category: category.value,
-        description: description.value,
-        amount: amount.value,
-      };
-      const addData = await axios.post(url, newData);
-
-      if (addData.status !== 201) return alert('저장 실패');
-
-      fetchList();
-    } catch (error) {
-      alert('작업 중, ERR 발생');
-      console.log(error);
-    }
+    sendClose();
+  } else {
+    alert('다시 입력해주세요');
   }
-  sendClose();
 }
 fetchList();
 </script>

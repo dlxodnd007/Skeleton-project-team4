@@ -2,7 +2,7 @@
     "user": {
         "id": 1,
         "name": "최규찬",
-        "profilePicture": "/src/asset/images/avatar3.png",
+        "profilePicture": "/src/asset/images/avatar4.png",
         "income_goal": 50000,
         "expense_goal": 30000
     },

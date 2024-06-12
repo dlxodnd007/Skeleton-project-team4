@@ -198,7 +198,7 @@ async function sendComfirm() {
         alert("다시 입력해주세요");
     }
 }
-fetchListOrder();
+fetchList();
 </script>
 
 <style scoped>

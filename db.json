@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "최규찬",
       "profilePicture": "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202203/30/sportskhan/20220330171600461ppis.jpg",
       "income_goal": 50000,
@@ -12,12 +12,21 @@
     {
       "date": "2024-06-03",
       "amount": 500000,
-      "description": "월급"
+      "description": "월급",
+      "id": "f413"
     },
     {
       "date": "2024-06-01",
       "amount": 300000,
-      "description": "용돈"
+      "description": "용돈",
+      "id": "06fb"
+    },
+    {
+      "id": "3265",
+      "date": "2024-06-03",
+      "category": "식비",
+      "description": "식비",
+      "amount": "10000"
     }
   ],
   "expenses": [
@@ -25,67 +34,148 @@
       "date": "2024-06-03",
       "amount": 34000,
       "category": "식비",
-      "description": "배민-닭발"
+      "description": "배민-닭발",
+      "id": "cfb8"
     },
     {
       "date": "2024-06-03",
       "amount": 100000,
       "category": "적금",
-      "description": "주택청약"
+      "description": "주택청약",
+      "id": "15b7"
     },
     {
       "date": "2024-06-04",
       "amount": 5500,
       "category": "식비",
-      "description": "세종대 학식"
+      "description": "세종대 학식",
+      "id": "f53f"
     },
     {
       "date": "2024-06-04",
       "amount": 45000,
       "category": "식비",
-      "description": "마왕족발"
+      "description": "마왕족발",
+      "id": "67bf"
     },
     {
       "date": "2024-06-05",
       "amount": 6000,
       "category": "식비",
-      "description": "세종대 학식"
+      "description": "세종대 학식",
+      "id": "6783"
     },
     {
       "date": "2024-06-07",
       "amount": 18000,
       "category": "식비",
-      "description": "은혜즉석떡볶이"
+      "description": "은혜즉석떡볶이",
+      "id": "4138"
     },
     {
       "date": "2024-06-07",
       "amount": 36000,
       "category": "쇼핑",
-      "description": "아트박스-생일선물"
+      "description": "아트박스-생일선물",
+      "id": "556c"
     },
     {
       "date": "2024-06-08",
       "amount": 25000,
       "category": "쇼핑",
-      "description": "다이소-이것저것"
+      "description": "다이소-이것저것",
+      "id": "df15"
     },
     {
       "date": "2024-06-10",
       "amount": 62000,
       "category": "교통비",
-      "description": "기후동행카드 충전"
+      "description": "기후동행카드 충전",
+      "id": "8c2c"
     },
     {
       "date": "2024-06-10",
       "amount": 40000,
       "category": "식비",
-      "description": "신사골 감자탕"
+      "description": "신사골 감자탕",
+      "id": "32ac"
     },
     {
       "date": "2024-06-11",
       "amount": 76000,
       "category": "식비",
-      "description": "홈플러스 장보기"
+      "description": "홈플러스 장보기",
+      "id": "26fb"
+    },
+    {
+      "id": "7c9d",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "e968",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "f800",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "ee04",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "62e0",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "017c",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "948d",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "ad98",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0
+    },
+    {
+      "id": "07fa",
+      "date": "2024-06-05",
+      "category": "",
+      "description": "123",
+      "amount": "10000"
+    },
+    {
+      "id": "af2b",
+      "date": "2024-06-05",
+      "category": "식비",
+      "description": "123",
+      "amount": "10000"
     }
   ]
 }

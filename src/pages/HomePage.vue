@@ -1,12 +1,8 @@
 <template>
-  <div class="home-page">
-    <UserProfile />
-  </div>
+  <div class="home-page"></div>
 </template>
 
-<script setup>
-import UserProfile from '@/components/UserProfile.vue';
-</script>
+<script setup></script>
 
 <style scoped>
 .home-page {

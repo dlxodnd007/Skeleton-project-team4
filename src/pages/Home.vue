@@ -1,21 +1,16 @@
 <template>
-  <div class="container">
-    <UserProfile />
-    <div class="main">
-      <button @click="showModal">모달 열기</button>
-      <ModalComponents :visible="isModalVisible" @close-modal="hideModal">
-      </ModalComponents>
-      <ShowList />
+  <div>
+    <ModalComponents :visible="isModalVisible" @close-modal="hideModal" />
+    <div class="button-area">
+      <AddButton button @click="showModal" />
     </div>
-    <AddButton class="addbutton-container" />
   </div>
 </template>
 <script setup>
 import AddButton from '@/components/AddButton.vue';
-import UserProfile from '@/components/UserProfile.vue';
 import { ref } from 'vue';
 import ModalComponents from '@/components/Modal.vue';
-import ShowList from '@/components/ShowList.vue';
+// import ShowList from '@/components/ShowList.vue';
 
 const isModalVisible = ref(false);
 
@@ -29,9 +24,9 @@ function hideModal() {
 </script>
 
 <style scoped>
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.button-area {
+  position: absolute;
+  bottom: 100px;
+  right: 30px;
 }
 </style>

@@ -6,18 +6,28 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
-import { useAccountBookStore } from '@/stores/accountBook';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
-const accountBookStore = useAccountBookStore();
-const { totalExpenses, fetchExpenseData } = accountBookStore;
-
+const totalExpenses = ref(null);
 const formatNumber = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+const fetchExpenses = async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/expenses');
+    totalExpenses.value = response.data.reduce(
+      (acc, expenses) => acc + expenses.amount,
+      0
+    );
+  } catch (error) {
+    console.error('수입 데이터를 가져오는 중 오류가 발생했습니다:', error);
+  }
+};
+
 onMounted(() => {
-  fetchExpenseData();
+  fetchExpenses();
 });
 </script>
 

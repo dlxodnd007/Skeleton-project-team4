@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { reactive, computed, ref } from 'vue';
 import axios from 'axios';
 
-export const useAccountBookStore = defineStore('accountBook', () => {
+export const useUserStore = defineStore('user', () => {
   const state = reactive({
     user: {},
   });

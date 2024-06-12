@@ -1,51 +1,62 @@
 <template>
-  <div v-for="ordered of orderedDate.slice(0, 5)">
-    <!-- <li v-for="ordered of orderedDate"> -->
-    날짜 : {{ ordered.date }}--금액 : {{ ordered.mark
-    }}{{ ordered.amount }}원--내용 : {{ ordered.description }}--
-    {{ ordered.check }}
-    <!-- </li> -->
-  </div>
+    <div class="history-container" v-for="ordered of orderedDate">
+        <div
+            class="left-column"
+            v-if="Number(ordered.date.slice(6, 7)) === selectedMonth"
+        >
+            <div v-if="Number(ordered.date.slice(6, 7)) === selectedMonth">
+                {{ ordered.description }}
+            </div>
+            <div
+                class="text-muted small"
+                v-if="Number(ordered.date.slice(6, 7)) === selectedMonth"
+            >
+                {{ ordered.date }}
+            </div>
+        </div>
+        <div
+            class="right-column"
+            v-if="Number(ordered.date.slice(6, 7)) === selectedMonth"
+        >
+            {{ ordered.mark }}{{ formatNumber(ordered.amount) }}
+        </div>
+    </div>
 </template>
 
 <script setup>
-import axios from 'axios';
-import { ref } from 'vue';
+import axios from "axios";
+import { ref, computed, watch } from "vue";
+import { useChangeStore } from "@/stores/changedb.js";
 
-const transaction = ref([]);
-const orderedDate = ref([]);
+const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
-async function fetchList() {
-  try {
-    const url_income = 'http://localhost:3000/income';
-    const user_income = await axios.get(url_income);
-    console.log('user_income', user_income.data);
+const changeStore = useChangeStore();
+const orderedDate = computed(() => changeStore.orderedDate);
+const selectedMonth = computed(() => changeStore.select_month);
 
-    for (let i = 0; i < user_income.data.length; i++) {
-      user_income.data[i].check = '입금';
-      user_income.data[i].mark = '+';
-      transaction.value.push(user_income.data[i]);
-    }
-
-    const url_expenses = 'http://localhost:3000/expenses';
-    const user_expenses = await axios.get(url_expenses);
-    console.log('user_expenses', user_expenses);
-
-    for (let i = 0; i < user_expenses.data.length; i++) {
-      user_expenses.data[i].check = '지출';
-      user_expenses.data[i].mark = '-';
-      transaction.value.push(user_expenses.data[i]);
-    }
-    console.log('transaction', transaction.value);
-
-    orderedDate.value = transaction.value
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-      .reverse();
-    console.log('orderedDate', orderedDate.value);
-  } catch (e) {
-    alert('데이터 불러오기 문제 발생!');
-    console.log(e);
-  }
-}
-fetchList();
+console.log("selectedMonth", typeof changeStore.select_month);
 </script>
+<style scoped>
+.history-container {
+    background: white;
+    width: 100%;
+    height: 76px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+}
+.right-column {
+    font-weight: bold;
+}
+</style>

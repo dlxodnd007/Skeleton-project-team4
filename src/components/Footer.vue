@@ -1,12 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-white border-top">
     <div class="container-fluid">
-      <div class="navbar-nav d-flex justify-content-around w-100">
+      <div
+        class="navbar-nav d-flex justify-content-around align-items-center w-100"
+      >
         <router-link
           :to="{ name: 'category' }"
           class="nav-link d-flex flex-column align-items-center"
         >
-          <img :src="CategoryIcon" alt="categoryicon" />
+          <img :src="CategoryIcon" alt="categoryicon" class="icon" />
         </router-link>
         <router-link
           :to="{ name: 'home' }"
@@ -20,7 +22,7 @@
           :to="{ name: 'profile' }"
           class="nav-link d-flex flex-column align-items-center"
         >
-          <img :src="ProfileIcon" alt="profileicon" />
+          <img :src="ProfileIcon" alt="profileicon" class="icon" />
         </router-link>
       </div>
     </div>
@@ -37,6 +39,7 @@ import ProfileIcon from '@/assets/person-fill.svg';
 .navbar {
   height: 82px;
 }
+
 .home-circle {
   width: 50px;
   height: 50px;
@@ -49,9 +52,17 @@ import ProfileIcon from '@/assets/person-fill.svg';
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transition: transform 0.4s ease;
+}
+
+.home-circle:hover {
+  transform: scale(1.25);
+}
+.icon {
+  transition: transform 0.4s ease;
+}
+
+.icon:hover {
+  transform: scale(1.25);
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h2>최근사용내역</h2>
-    <ul>
+    <ul class="list-unstyled">
       <MakeComponent />
     </ul>
   </div>
@@ -12,3 +11,14 @@ import axios from 'axios';
 import { ref } from 'vue';
 import MakeComponent from '@/components/MakeComponent.vue';
 </script>
+
+<style scoped>
+ul {
+  height: 450px;
+  overflow-y: auto;
+  border-radius: 15px;
+}
+ul::-webkit-scrollbar {
+  display: none;
+}
+</style>

@@ -23,6 +23,12 @@
   "expenses": [
     {
       "date": "2024-06-03",
+      "amount": 20000,
+      "category": "이체",
+      "description": "임준수"
+    },
+    {
+      "date": "2024-06-03",
       "amount": 34000,
       "category": "식비",
       "description": "배민-닭발"

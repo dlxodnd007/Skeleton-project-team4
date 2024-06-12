@@ -12,6 +12,10 @@ import Footer from '@/components/Footer.vue';
   </div>
 </template>
 
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+</script>
+
 <style scoped>
 .footer {
   position: absolute;

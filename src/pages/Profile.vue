@@ -84,8 +84,8 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
-import { useAccountBookStore } from "@/stores/counter.js";
-const accountBookStore = useAccountBookStore();
+import { useUserStore } from "@/stores/user.js";
+const userStore = useUserStore();
 const {
     fetchUserData,
     accountBookUser,
@@ -93,7 +93,7 @@ const {
     editIncomeGoal,
     editExpenseGoal,
     editCharacter,
-} = accountBookStore;
+} = userStore;
 
 const editingMode = ref(true);
 const incomeEditingMode = ref(true);

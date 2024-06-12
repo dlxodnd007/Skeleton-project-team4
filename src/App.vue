@@ -7,6 +7,10 @@ import Footer from '@/components/Footer.vue';
 <template>
   <div>
     <UserProfile class="header" />
+<<<<<<< HEAD
+    <router-link to="/profile"></router-link>
+=======
+>>>>>>> b467c367c6f4e41e79dad6430979bae4e52361ce
     <RouterView />
     <Footer class="footer" />
   </div>

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "user": {
     "id": 1,
     "name": "최규찬",
@@ -12,6 +13,14 @@
       "amount": 500000,
       "description": "월급",
       "id": "1f19"
+=======
+    "user": {
+        "id": 1,
+        "name": "최규찬",
+        "profilePicture": "/src/asset/images/avatar4.png",
+        "income_goal": 50000,
+        "expense_goal": 30000
+>>>>>>> 7b180622cd0c96c38ab04aedd3e7eb7dee103304
     },
     {
       "date": "2024-06-01",

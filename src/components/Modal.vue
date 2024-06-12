@@ -104,7 +104,7 @@ const picked = ref('');
 
 async function fetchList() {
   try {
-    const url = 'http://localhost:3000/users';
+    const url = 'http://localhost:3000/user';
     const user_data = await axios.get(url);
     console.log('user_data', user_data);
   } catch (e) {

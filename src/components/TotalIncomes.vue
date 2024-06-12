@@ -1,6 +1,7 @@
 <template>
   <div class="incomes-summary" v-if="totalIncomes !== null">
-    <h3>총 수입 금액: {{ totalIncomes }}원</h3>
+    <h5><strong>총 수입</strong></h5>
+    <h6>{{ formatNumber(totalIncomes) }}원</h6>
   </div>
 </template>
 
@@ -9,6 +10,9 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const totalIncomes = ref(null);
+const formatNumber = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
 const fetchIncomes = async () => {
   try {
@@ -29,11 +33,12 @@ onMounted(() => {
 
 <style scoped>
 .incomes-summary {
-  display: flex;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  margin-top: 20px;
+  width: 160px;
+  height: 123px;
+  background-color: #56d1a5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  color: white;
 }
 </style>

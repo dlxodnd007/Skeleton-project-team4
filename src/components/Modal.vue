@@ -3,12 +3,12 @@
     <div class="modal2">
       <div class="modal-content">
         <div>
-          <h2>내역 추가</h2>
-          <hr />
+          <h4>내역 추가</h4>
+          <hr class="my-2" />
           <div class="row">
             <div class="col">
-              <div class="mb-3">
-                <label for="date" class="form-label">날짜</label>
+              <div class="mb-2">
+                <label for="date" class="form-label fw-bold">날짜</label>
                 <input
                   id="date"
                   type="date"
@@ -16,16 +16,18 @@
                   v-model="date"
                 />
               </div>
-              <div class="mb-3">
-                <label for="category" class="form-label">카테고리(내역)</label>
+              <div class="mb-2">
+                <label for="category" class="form-label fw-bold"
+                  >카테고리(내역)</label
+                >
                 <select id="category" class="form-select" v-model="category">
                   <option>식비</option>
                   <option>생활비</option>
                   <option>소비</option>
                 </select>
               </div>
-              <div class="mb-3">
-                <label for="description" class="form-label">내용</label>
+              <div class="mb-2">
+                <label for="description" class="form-label fw-bold">내용</label>
                 <input
                   id="description"
                   type="text"
@@ -33,8 +35,8 @@
                   v-model="description"
                 />
               </div>
-              <div class="mb-3">
-                <label for="amount" class="form-label">금액</label>
+              <div class="mb-2">
+                <label for="amount" class="form-label fw-bold">금액</label>
                 <input
                   id="amount"
                   type="text"
@@ -42,45 +44,42 @@
                   v-model="amount"
                 />
               </div>
-              <div class="mb-3">
-                <label class="form-label">수입/지출</label>
-                <div>
-                  <input
-                    id="income"
-                    type="radio"
-                    value="income"
-                    v-model="picked"
-                  />
-                  <label for="income">수입</label>
-                </div>
-                <div>
-                  <input
-                    id="expenses"
-                    type="radio"
-                    value="expenses"
-                    v-model="picked"
-                  />
-                  <label for="expenses">지출</label>
+              <div class="mb-2">
+                <label class="form-label fw-bold">수입/지출</label>
+                <div class="d-flex flex-row">
+                  <div>
+                    <input
+                      id="income"
+                      type="radio"
+                      value="income"
+                      v-model="picked"
+                    />
+                    <label for="income">수입</label>
+                  </div>
+                  <div>
+                    <input
+                      id="expenses"
+                      type="radio"
+                      value="expenses"
+                      v-model="picked"
+                    />
+                    <label for="expenses">지출</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center my-2">
             <div class="col-auto">
               <button
-                class="btn shadow"
-                style="background-color: #56d1a5"
+                class="btn shadow comfirm-button mx-4"
                 @click="sendComfirm"
               >
                 등록
               </button>
             </div>
             <div class="col-auto">
-              <button
-                class="btn shadow"
-                style="background-color: #c8c8c8"
-                @click="sendClose"
-              >
+              <button class="btn shadow close-button mx-4" @click="sendClose">
                 취소
               </button>
             </div>
@@ -96,6 +95,11 @@
 import { ref, defineProps, defineEmits } from 'vue';
 import axios from 'axios';
 
+import { useChangeStore } from '@/stores/changedb.js';
+
+const changeStore = useChangeStore();
+const { fetchListOrder } = changeStore;
+
 const date = ref('');
 const amount = ref(0);
 const category = ref('');
@@ -104,7 +108,7 @@ const picked = ref('');
 
 async function fetchList() {
   try {
-    const url = 'http://localhost:3000/users';
+    const url = 'http://localhost:3000/user';
     const user_data = await axios.get(url);
     console.log('user_data', user_data);
   } catch (e) {
@@ -150,7 +154,7 @@ async function sendComfirm() {
 
         if (addData.status !== 201) return alert('저장 실패');
 
-        fetchList();
+        fetchListOrder();
       } catch (error) {
         alert('작업 중, ERR 발생');
         console.log(error);
@@ -170,7 +174,7 @@ async function sendComfirm() {
 
         if (addData.status !== 201) return alert('저장 실패');
 
-        fetchList();
+        fetchListOrder();
       } catch (error) {
         alert('작업 중, ERR 발생');
         console.log(error);
@@ -202,7 +206,7 @@ fetchList();
   left: 0;
   top: 0;
   width: 350px;
-  height: 650px;
+  height: 520px;
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -219,8 +223,8 @@ fetchList();
   border-radius: 5px;
   border: none;
 }
-
-.modal-content {
-  margin-top: 30px;
+.comfirm-button:hover,
+.close-button:hover {
+  transform: scale(1.1);
 }
 </style>

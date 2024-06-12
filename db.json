@@ -1,13 +1,11 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "최규찬",
-      "profilePicture": "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202203/30/sportskhan/20220330171600461ppis.jpg",
-      "income_goal": 50000,
-      "expense_goal": 30000
-    }
-  ],
+  "user": {
+    "id": 1,
+    "name": "최규찬",
+    "profilePicture": "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202203/30/sportskhan/20220330171600461ppis.jpg",
+    "income_goal": 50000,
+    "expense_goal": 30000
+  },
   "income": [
     {
       "date": "2024-06-03",
@@ -17,7 +15,8 @@
     {
       "date": "2024-06-01",
       "amount": 300000,
-      "description": "용돈"
+      "description": "용돈",
+      "id": "2150"
     }
   ],
   "expenses": [
@@ -595,7 +594,8 @@
       "date": "2024-05-04",
       "amount": 100000,
       "category": "적금",
-      "description": "주택청약"
+      "description": "주택청약",
+      "id": "289a"
     },
     {
       "date": "2024-06-04",

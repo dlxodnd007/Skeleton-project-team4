@@ -1,40 +1,90 @@
 <template>
   <div class="modal-overlay" v-if="visible">
-    <div class="modale">
+    <div class="modal2">
       <div class="modal-content">
         <div>
-          <h1>내역 추가</h1>
+          <h2>내역 추가</h2>
           <hr />
-          <div>
-            <h1>날짜</h1>
-            <input type="date" v-model="date" />
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="date" class="form-label">날짜</label>
+                <input
+                  id="date"
+                  type="date"
+                  class="form-control"
+                  v-model="date"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="category" class="form-label">카테고리(내역)</label>
+                <select id="category" class="form-select" v-model="category">
+                  <option>식비</option>
+                  <option>생활비</option>
+                  <option>소비</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">내용</label>
+                <input
+                  id="description"
+                  type="text"
+                  class="form-control"
+                  v-model="description"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="amount" class="form-label">금액</label>
+                <input
+                  id="amount"
+                  type="text"
+                  class="form-control"
+                  v-model="amount"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">수입/지출</label>
+                <div>
+                  <input
+                    id="income"
+                    type="radio"
+                    value="income"
+                    v-model="picked"
+                  />
+                  <label for="income">수입</label>
+                </div>
+                <div>
+                  <input
+                    id="expenses"
+                    type="radio"
+                    value="expenses"
+                    v-model="picked"
+                  />
+                  <label for="expenses">지출</label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <h1>카테고리(내역)</h1>
-            <select v-model="category">
-              <option>식비</option>
-              <option>생활비</option>
-              <option>소비</option>
-            </select>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <button
+                class="btn shadow"
+                style="background-color: #56d1a5"
+                @click="sendComfirm"
+              >
+                등록
+              </button>
+            </div>
+            <div class="col-auto">
+              <button
+                class="btn shadow"
+                style="background-color: #c8c8c8"
+                @click="sendClose"
+              >
+                취소
+              </button>
+            </div>
           </div>
-          <div>
-            <h1>내용</h1>
-            <input type="text" v-model="description" />
-          </div>
-          <div>
-            <h1>금액</h1>
-            <input type="text" v-model="amount" />
-          </div>
-
-          <div>
-            <input type="radio" id="one" value="income" v-model="picked" />
-            <label for="one">수입</label>
-            <input type="radio" id="two" value="expenses" v-model="picked" />
-            <label for="two">지출</label>
-          </div>
-          <br />
-          <button class="comfirm-button" @click="sendComfirm">등록</button>
-          <button class="close-button" @click="sendClose">취소</button>
         </div>
       </div>
       <slot></slot>
@@ -147,30 +197,27 @@ fetchList();
   align-items: center;
 }
 
-.modale {
+.modal2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 650px;
   background: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
 }
 
 .close-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: transparent;
+  background: #c8c8c8;
+  border-radius: 5px;
   border: none;
-  font-size: 20px;
-  font-weight: 700;
 }
 .comfirm-button {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: transparent;
+  background: #56d1a5;
+  border-radius: 5px;
   border: none;
-  font-size: 20px;
-  font-weight: 700;
 }
 
 .modal-content {

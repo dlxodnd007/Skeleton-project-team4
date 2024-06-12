@@ -1,10 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import UserProfile from '@/components/UserProfile.vue';
 import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
   <div>
+    <UserProfile class="header" />
     <RouterView />
     <Footer class="footer" />
   </div>
@@ -18,5 +20,9 @@ import Footer from '@/components/Footer.vue';
   right: 0;
   border-bottom-left-radius: 39px;
   border-bottom-right-radius: 39px;
+}
+.header {
+  top: 0;
+  left: 0;
 }
 </style>

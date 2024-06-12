@@ -29,10 +29,9 @@ onMounted(() => {
   align-items: center;
   padding: 10px;
   border-radius: 5px;
-  width: 400px;
+  width: 100%;
   justify-content: center;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
 }
 .profile-image {
   border-radius: 50%;
@@ -50,6 +49,6 @@ onMounted(() => {
   margin-top: 5px;
   font-weight: bold;
   font-size: 20px;
-  color: #333;
+  color: black;
 }
 </style>

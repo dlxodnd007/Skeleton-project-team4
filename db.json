@@ -1,4 +1,13 @@
 {
+<<<<<<< HEAD
+  "user": {
+    "id": 1,
+    "name": "규찬",
+    "expense_goal": 100000,
+    "income_goal": 20000,
+    "profilePicture": "/src/asset/images/avatar1.png"
+  },
+=======
   "users": [
     {
       "id": 1,
@@ -8,6 +17,7 @@
       "expense_goal": 30000
     }
   ],
+>>>>>>> 414cd1b4ab5dac0d88a7a6db27bdd0244aaa6f19
   "income": [
     {
       "date": "2024-06-03",

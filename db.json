@@ -1,10 +1,10 @@
 {
   "user": {
     "id": 1,
-    "name": "공연정",
-    "profilePicture": "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202203/30/sportskhan/20220330171600461ppis.jpg",
+    "name": "규찬",
     "expense_goal": 100000,
-    "income_goal": 20000
+    "income_goal": 20000,
+    "profilePicture": "/src/asset/images/avatar1.png"
   },
   "income": [
     {

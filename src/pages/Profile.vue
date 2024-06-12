@@ -1,13 +1,33 @@
 <template>
   <div class="profile-header">
     <div class="profile-img-container">
-      <img src="@/asset/images/avatar1.png" alt="Profile" class="profile-img" />
+      <img :src="user.profilePicture" alt="Profile" class="profile-img" />
       <button @click="toggleAvatar" class="profile-img-button">+</button>
       <div id="avatars" v-if="avatarEditingMode">
-        <img class="avatar" src="@/asset/images/avatar1.png" alt="avatar1" />
-        <img class="avatar" src="@/asset/images/avatar2.png" alt="avatar2" />
-        <img class="avatar" src="@/asset/images/avatar3.png" alt="avatar3" />
-        <img class="avatar" src="@/asset/images/avatar4.png" alt="avatar4" />
+        <img
+          @click="editCharacter('/src/asset/images/avatar1.png')"
+          class="avatar"
+          src="@/asset/images/avatar1.png"
+          alt="avatar1"
+        />
+        <img
+          @click="editCharacter('/src/asset/images/avatar2.png')"
+          class="avatar"
+          src="@/asset/images/avatar2.png"
+          alt="avatar2"
+        />
+        <img
+          @click="editCharacter('/src/asset/images/avatar3.png')"
+          class="avatar"
+          src="@/asset/images/avatar3.png"
+          alt="avatar3"
+        />
+        <img
+          @click="editCharacter('/src/asset/images/avatar4.png')"
+          class="avatar"
+          src="@/asset/images/avatar4.png"
+          alt="avatar4"
+        />
       </div>
     </div>
     <h2>{{ user.name }}</h2>
@@ -60,6 +80,7 @@ const {
   editName,
   editIncomeGoal,
   editExpenseGoal,
+  editCharacter,
 } = accountBookStore;
 
 const editingMode = ref(true);

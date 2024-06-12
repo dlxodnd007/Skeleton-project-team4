@@ -6,15 +6,11 @@ import Footer from '@/components/Footer.vue';
 
 <template>
   <div>
-    <UserProfile class="header" />
+    <!-- <UserProfile class="header" /> -->
     <RouterView />
     <Footer class="footer" />
   </div>
 </template>
-
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-</script>
 
 <style scoped>
 .footer {

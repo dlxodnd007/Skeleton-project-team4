@@ -1,12 +1,18 @@
-<<<<<<< HEAD
 <template>
   <div>
+    <select class="monthSelect" v-model="selectedMonth" @change="changeMonth">
+      <option v-for="month in 12" :value="month" :key="month">
+        {{ month }}월
+      </option>
+    </select>
     <div class="title">가장 많은 지출을 한 카테고리는</div>
     <div class="title">
       <span class="emphasis">{{ mostSpentCategory }}</span
       >입니다!
     </div>
-    <!-- <Doughnut :chart-data="chartData" :options="chartOptions" /> -->
+
+    <!-- <Doughnut :data="data" :options="options" /> -->
+
     <ul class="categoryList">
       <li v-for="expenses in reactiveExpensesArray" :key="expenses.id">
         <span class="circle" :style="{ backgroundColor: expenses.color }">
@@ -18,15 +24,22 @@
     </ul>
   </div>
 </template>
+
 <script setup>
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive, watch, onMounted, computed } from 'vue';
 import { useAccountBookStore } from '@/stores/accountBook.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'vue-chartjs';
+import * as chartConfig from '@/chartConfig.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const accountBookStore = useAccountBookStore();
-const { fetchExpenseData } = accountBookStore;
+const { fetchExpenseData, monthExpensesData } = accountBookStore;
 
 const mostSpentCategory = ref('');
-const totalAmmount = ref(0);
+const totalAmount = ref(0);
+const selectedMonth = ref(new Date().getMonth() + 1);
 
 const reactiveExpensesArray = reactive([
   { category: '식비', amount: 0, color: '#0DC9B9', percentage: 0 },
@@ -56,66 +69,102 @@ const reactiveExpensesArray = reactive([
   },
 ]);
 
-function updateData() {
+function updateData(month) {
   const foodExpenses = accountBookStore.accountBookExpenses
     .filter((item) => item.category === '식비')
+    .filter((item) => parseInt(item.date.slice(5, 7)) === parseInt(month))
     .reduce((acc, cur) => (acc += parseInt(cur.amount)), 0);
   const transportationExpenses = accountBookStore.accountBookExpenses
     .filter((item) => item.category === '교통비')
+    .filter((item) => parseInt(item.date.slice(5, 7)) === parseInt(month))
     .reduce((acc, cur) => (acc += parseInt(cur.amount)), 0);
   const savingsExpenses = accountBookStore.accountBookExpenses
     .filter((item) => item.category === '적금')
+    .filter((item) => parseInt(item.date.slice(5, 7)) === parseInt(month))
     .reduce((acc, cur) => (acc += parseInt(cur.amount)), 0);
   const shoppingExpenses = accountBookStore.accountBookExpenses
     .filter((item) => item.category === '쇼핑')
+    .filter((item) => parseInt(item.date.slice(5, 7)) === parseInt(month))
     .reduce((acc, cur) => (acc += parseInt(cur.amount)), 0);
   const transferExpenses = accountBookStore.accountBookExpenses
     .filter((item) => item.category === '이체')
+    .filter((item) => parseInt(item.date.slice(5, 7)) === parseInt(month))
     .reduce((acc, cur) => (acc += parseInt(cur.amount)), 0);
 
-  reactiveExpensesArray[0].amount = foodExpenses;
-  reactiveExpensesArray[1].amount = transportationExpenses;
-  reactiveExpensesArray[2].amount = savingsExpenses;
-  reactiveExpensesArray[3].amount = shoppingExpenses;
-  reactiveExpensesArray[4].amount = transferExpenses;
+  reactiveExpensesArray.find((item) => item.category === '식비').amount =
+    foodExpenses;
+  reactiveExpensesArray.find((item) => item.category === '교통비').amount =
+    transportationExpenses;
+  reactiveExpensesArray.find((item) => item.category === '적금').amount =
+    savingsExpenses;
+  reactiveExpensesArray.find((item) => item.category === '쇼핑').amount =
+    shoppingExpenses;
+  reactiveExpensesArray.find((item) => item.category === '이체').amount =
+    transferExpenses;
 
-  totalAmmount.value =
+  totalAmount.value =
     foodExpenses +
     transportationExpenses +
     savingsExpenses +
     shoppingExpenses +
     transferExpenses;
 
-  reactiveExpensesArray[0].percentage = Math.round(
-    (foodExpenses / totalAmmount.value) * 100
-  );
-
-  reactiveExpensesArray[1].percentage = Math.round(
-    (transportationExpenses / totalAmmount.value) * 100
-  );
-  reactiveExpensesArray[2].percentage = Math.round(
-    (savingsExpenses / totalAmmount.value) * 100
-  );
-  reactiveExpensesArray[3].percentage = Math.round(
-    (shoppingExpenses / totalAmmount.value) * 100
-  );
-  reactiveExpensesArray[4].percentage = Math.round(
-    (transferExpenses / totalAmmount.value) * 100
-  );
+  if (totalAmount.value === 0) {
+    reactiveExpensesArray.forEach((item) => (item.percentage = 0));
+  } else {
+    reactiveExpensesArray.find((item) => item.category === '식비').percentage =
+      Math.round((foodExpenses / totalAmount.value) * 100);
+    reactiveExpensesArray.find(
+      (item) => item.category === '교통비'
+    ).percentage = Math.round(
+      (transportationExpenses / totalAmount.value) * 100
+    );
+    reactiveExpensesArray.find((item) => item.category === '적금').percentage =
+      Math.round((savingsExpenses / totalAmount.value) * 100);
+    reactiveExpensesArray.find((item) => item.category === '쇼핑').percentage =
+      Math.round((shoppingExpenses / totalAmount.value) * 100);
+    reactiveExpensesArray.find((item) => item.category === '이체').percentage =
+      Math.round((transferExpenses / totalAmount.value) * 100);
+  }
 
   mostSpentCategory.value = reactiveExpensesArray.sort(
     (a, b) => b.amount - a.amount
   )[0].category;
 }
+
+function changeMonth() {
+  updateData(selectedMonth.value);
+}
+
 fetchExpenseData();
+
 watch(
   () => accountBookStore.accountBookExpenses,
   () => {
-    updateData();
+    updateData(selectedMonth.value);
   },
   { immediate: true }
 );
 </script>
+
+<!-- <script>
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'vue-chartjs';
+import * as chartConfig from '@/chartConfig.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export default {
+  name: 'App',
+  components: {
+    Doughnut,
+  },
+  data() {
+    return chartConfig;
+  },
+};
+</script> -->
+
 <style>
 .title {
   font-family: Inter;
@@ -130,6 +179,29 @@ watch(
   font-size: 25px;
   color: #0dc9b9;
 }
+.monthSelect {
+  width: 62px;
+  border: 1px solid #c9c9c9;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 7px 3px;
+  font-weight: 400;
+  font-size: 15px;
+  color: #504e64;
+  text-align: center;
+  outline: none;
+}
+
+.monthSelect:focus {
+  background-color: #0dc9b9;
+  border: 1px solid #0dc9b9;
+  color: white;
+}
+
+.monthSelect option {
+  color: #504e64;
+}
+
 .categoryList {
   list-style: none;
   padding: 0;
@@ -163,10 +235,3 @@ watch(
   color: #504e64;
 }
 </style>
-=======
-<template></template>
-
-<script setup></script>
-
-<style></style>
->>>>>>> 4eaf913dfda76a3d4d466405aa0c206588bf1766

@@ -115,6 +115,7 @@ watch(
   { immediate: true }
 );
 </script>
+
 <style>
 .title {
   font-family: Inter;

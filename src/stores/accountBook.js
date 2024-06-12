@@ -15,7 +15,6 @@ export const useAccountBookStore = defineStore('accountBook', () => {
   async function fetchIncomeData() {
     try {
       const fetchIncomeDataRes = await axios.get(BASEURL_INCOME);
-
       state.income = fetchIncomeDataRes.data;
     } catch (error) {
       alert('수입 데이터 통신 Err 발생');
@@ -26,7 +25,6 @@ export const useAccountBookStore = defineStore('accountBook', () => {
   async function fetchExpenseData() {
     try {
       const fetchExpenseDataRes = await axios.get(BASEURL_EXPENSE);
-
       state.expenses = fetchExpenseDataRes.data;
     } catch (error) {
       alert('지출 데이터 통신 Err 발생');
@@ -37,9 +35,21 @@ export const useAccountBookStore = defineStore('accountBook', () => {
   const accountBookIncome = computed(() => state.income);
   const accountBookExpenses = computed(() => state.expenses);
 
+  // Calculate total income
+  const totalIncome = computed(() => {
+    return state.income.reduce((total, item) => total + item.amount, 0);
+  });
+
+  // Calculate total expenses
+  const totalExpenses = computed(() => {
+    return state.expenses.reduce((total, item) => total + item.amount, 0);
+  });
+
   return {
     accountBookIncome,
     accountBookExpenses,
+    totalIncome,
+    totalExpenses,
     fetchIncomeData,
     fetchExpenseData,
   };

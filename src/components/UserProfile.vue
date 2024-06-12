@@ -35,10 +35,11 @@ onMounted(() => {
 }
 .profile-image {
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   margin-right: 20px;
+  background-image: url('@/assets/gradientcircle.svg');
 }
 .profile-info {
   display: flex;

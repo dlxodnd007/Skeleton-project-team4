@@ -13,7 +13,7 @@ import axios from 'axios';
 const user = ref(null);
 const fetchUser = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/users/1');
+    const response = await axios.get('http://localhost:3000/user');
     user.value = response.data;
   } catch (error) {
     console.error('There was an error fetching the user data:', error);

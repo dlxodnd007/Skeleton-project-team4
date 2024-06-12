@@ -1,13 +1,32 @@
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import UserProfile from '@/components/UserProfile.vue';
+import Footer from '@/components/Footer.vue';
+</script>
+
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/category">Category</RouterLink>
-  </nav>
-  <RouterView />
+  <div>
+    <UserProfile class="header" />
+    <RouterView />
+    <Footer class="footer" />
+  </div>
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom-left-radius: 39px;
+  border-bottom-right-radius: 39px;
+}
+.header {
+  top: 0;
+  left: 0;
+}
+</style>

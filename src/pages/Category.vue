@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <div>
     <div class="title">가장 많은 지출을 한 카테고리는</div>
@@ -162,3 +163,10 @@ watch(
   color: #504e64;
 }
 </style>
+=======
+<template></template>
+
+<script setup></script>
+
+<style></style>
+>>>>>>> 4eaf913dfda76a3d4d466405aa0c206588bf1766

@@ -18,7 +18,7 @@ export const useAccountBookStore = defineStore('accountBook', () => {
 
       state.income = fetchIncomeDataRes.data;
     } catch (error) {
-      alert('가계부 데이터 통신 Err 발생');
+      alert('수입 데이터 통신 Err 발생');
       console.log(error);
     }
   }
@@ -29,7 +29,7 @@ export const useAccountBookStore = defineStore('accountBook', () => {
 
       state.expenses = fetchExpenseDataRes.data;
     } catch (error) {
-      alert('가계부 데이터 통신 Err 발생');
+      alert('지출 데이터 통신 Err 발생');
       console.log(error);
     }
   }

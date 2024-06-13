@@ -6,7 +6,7 @@
       @change="updateYear"
     >
       <option v-for="year in years" :key="year" :value="year">
-        {{ year }}
+        {{ year }}년
       </option>
     </select>
     <select class="form-select" v-model="selectedMonth" @change="updateMonth">

@@ -13,28 +13,11 @@ import { useChangeStore } from '@/stores/changedb.js';
 const changeStore = useChangeStore();
 const orderedDate = computed(() => changeStore.computedOrderedDate);
 
-const totalExpensesValue = ref(0);
+const totalExpenses = computed(() => changeStore.tot_expenses);
 
-const totalExpenses = computed(() => totalExpensesValue.value);
 const formatNumber = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
-
-const fetchExpenses = async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/expenses');
-    totalExpensesValue.value = response.data.reduce(
-      (acc, expenses) => acc + expenses.amount,
-      0
-    );
-  } catch (error) {
-    console.error('지출 데이터를 가져오는 중 오류가 발생했습니다:', error);
-  }
-};
-
-onMounted(() => {
-  fetchExpenses();
-});
 </script>
 
 <style scoped>

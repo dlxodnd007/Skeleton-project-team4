@@ -3,10 +3,89 @@
     "id": 1,
     "name": "최규찬",
     "profilePicture": "/src/asset/images/avatar2.png",
-    "income_goal": 300000000,
-    "expense_goal": 200000
+    "income_goal": 4555,
+    "expense_goal": 5000
   },
-  "income": [],
+  "income": [
+    {
+      "date": "2024-06-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-06-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "date": "2024-05-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-05-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "date": "2024-04-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-04-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "date": "2024-03-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-03-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "date": "2024-02-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-02-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "date": "2024-01-03",
+      "amount": 1200000,
+      "description": "월급",
+      "id": "ae87"
+    },
+    {
+      "date": "2024-01-01",
+      "amount": 300000,
+      "description": "용돈",
+      "id": "2150"
+    },
+    {
+      "id": "fc99",
+      "date": "2024-06-09",
+      "description": "용돈",
+      "amount": 500000
+    }
+  ],
   "expenses": [
     {
       "date": "2024-02-22",
@@ -378,6 +457,27 @@
       "category": "쇼핑",
       "description": "나이키",
       "id": "39f1"
+    },
+    {
+      "date": "2024-05-19",
+      "amount": 28800,
+      "category": "쇼핑",
+      "description": "나이키",
+      "id": "971d"
+    },
+    {
+      "id": "b465",
+      "date": "2024-06-10",
+      "category": "교통비",
+      "description": "후불교통",
+      "amount": 200000
+    },
+    {
+      "id": "b8af",
+      "date": "2024-03-18",
+      "category": "이체",
+      "description": "방탈출 10번",
+      "amount": 300000
     }
   ]
 }

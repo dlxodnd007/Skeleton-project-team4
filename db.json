@@ -2,9 +2,9 @@
   "user": {
     "id": 1,
     "name": "최규찬",
-    "profilePicture": "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202203/30/sportskhan/20220330171600461ppis.jpg",
-    "income_goal": 9000,
-    "expense_goal": 9000
+    "profilePicture": "/src/asset/images/avatar2.png",
+    "income_goal": 300000000,
+    "expense_goal": 200000
   },
   "income": [],
   "expenses": [
@@ -21,13 +21,6 @@
       "category": "식비",
       "description": "아이스티",
       "id": "be19"
-    },
-    {
-      "date": "2024-02-25",
-      "amount": 3000,
-      "category": "식비",
-      "description": "아이스티",
-      "id": "60bc"
     },
     {
       "date": "2024-02-04",

@@ -99,6 +99,7 @@
         </div>
         <div class="goal">
           <h3 style="font-weight: bold">목표</h3>
+          <br />
           <div id="content">
             <span>
               <span style="font-weight: bold; font-size: 16px"
@@ -106,7 +107,8 @@
               >
               <br />
               <h3 @click="toggleIncomeEdit" style="font-weight: bold">
-                ₩ {{ user.income_goal.toLocaleString() }}
+                ₩
+                {{ user.income_goal ? user.income_goal.toLocaleString() : '' }}
               </h3>
               <div v-if="goalEditingMode">
                 <input
@@ -125,7 +127,10 @@
               >
               <br />
               <h3 style="font-weight: bold">
-                ₩ {{ user.expense_goal.toLocaleString() }}
+                ₩
+                {{
+                  user.expense_goal ? user.expense_goal.toLocaleString() : ''
+                }}
               </h3>
               <div v-if="goalEditingMode">
                 <input
@@ -194,6 +199,7 @@ function editGoalHandler() {
   editGoal(newIncomeGoal.value, newExpenseGoal.value);
   newIncomeGoal.value = '';
   newExpenseGoal.value = '';
+  goalEditingMode.value = !goalEditingMode.value;
 }
 
 function editNameHandler() {
@@ -339,7 +345,7 @@ function isShowName() {
 .profile-header {
   position: relative;
   position: absolute;
-  top: 10px;
+  top: 60px;
   text-align: center;
   padding: 20px;
   background-color: #f5f5f5;
@@ -401,6 +407,7 @@ function isShowName() {
 .goal {
   background-color: #ffffff;
   border-radius: 10px;
+  padding: 28px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;

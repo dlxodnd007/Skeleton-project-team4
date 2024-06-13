@@ -84,6 +84,12 @@
       "date": "2024-06-09",
       "description": "용돈",
       "amount": 500000
+    },
+    {
+      "id": "39f5",
+      "date": "2024-06-04",
+      "description": "월급",
+      "amount": 200000
     }
   ],
   "expenses": [

@@ -208,7 +208,13 @@ const shouldShowMostCategory = computed(() => {
 });
 
 const shouldShowText = computed(() => {
-  return totalAmount.value === 0;
+  if (totalAmount.value === 0) {
+    chartData.labels = ['내역 없음'];
+    chartData.datasets[0].data = [1];
+    chartData.datasets[0].backgroundColor = ['#cccccc'];
+    return true;
+  }
+  return false;
 });
 
 function changeMonth() {

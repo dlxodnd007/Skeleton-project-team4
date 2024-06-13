@@ -1,39 +1,31 @@
 <template>
-    <div class="d-flex align-items-center">
-        <select
-            class="form-select me-3"
-            v-model="selectedYear"
-            @change="updateYear"
-        >
-            <option v-for="year in years" :key="year" :value="year">
-                {{ year }}
-            </option>
-        </select>
-        <select
-            class="form-select"
-            v-model="selectedMonth"
-            @change="updateMonth"
-        >
-            <option
-                v-for="month in months"
-                :key="month.value"
-                :value="month.value"
-            >
-                {{ month.label }}
-            </option>
-        </select>
-    </div>
+  <div class="d-flex align-items-center">
+    <select
+      class="form-select me-3"
+      v-model="selectedYear"
+      @change="updateYear"
+    >
+      <option v-for="year in years" :key="year" :value="year">
+        {{ year }}
+      </option>
+    </select>
+    <select class="form-select" v-model="selectedMonth" @change="updateMonth">
+      <option v-for="month in months" :key="month.value" :value="month.value">
+        {{ month.label }}
+      </option>
+    </select>
+  </div>
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, computed } from "vue";
+import { ref, computed } from 'vue';
 const currentMonth = new Date().getMonth() + 1;
 const currentYear = new Date().getFullYear();
 const selectedMonth = ref(currentMonth);
 const selectedYear = ref(currentYear);
 const years = Array.from({ length: 3 }, (_, i) => currentYear - i).reverse();
 
-import { useChangeStore } from "@/stores/changedb.js";
+import { useChangeStore } from '@/stores/changedb.js';
 
 const changeStore = useChangeStore();
 const { fetchListOrder, changeSelectMonth } = changeStore;
@@ -54,12 +46,12 @@ const months = computed(() => changeStore.months);
 //     { value: 12, label: "12월" },
 // ]);
 const updateYear = () => {
-    console.log("선택된 년도:", selectedYear.value);
+  console.log('선택된 년도:', selectedYear.value);
 };
 
 const updateMonth = () => {
-    console.log("선택된 월:", selectedMonth.value);
-    fetchListOrder();
-    changeSelectMonth(selectedMonth.value);
+  console.log('선택된 월:', selectedMonth.value);
+  fetchListOrder();
+  changeSelectMonth(selectedMonth.value);
 };
 </script>

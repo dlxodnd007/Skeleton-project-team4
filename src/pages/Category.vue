@@ -309,6 +309,7 @@ watch(
   border-radius: 15px;
   padding: 1rem;
 }
+
 .circle {
   display: inline-block;
   width: 45px;

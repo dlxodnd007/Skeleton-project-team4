@@ -21,18 +21,11 @@
                   >카테고리(내역)</label
                 >
                 <select id="category" class="form-select" v-model="category">
-                  <optgroup label="수입">
-                    <option>월급</option>
-                    <option>용돈</option>
-                    <option>투자수익</option>
-                  </optgroup>
-                  <optgroup label="지출">
-                    <option>식비</option>
-                    <option>교통비</option>
-                    <option>이체</option>
-                    <option>적금</option>
-                    <option>쇼핑</option>
-                  </optgroup>
+                  <option>식비</option>
+                  <option>교통비</option>
+                  <option>적금</option>
+                  <option>쇼핑</option>
+                  <option>이체</option>
                 </select>
               </div>
               <div class="mb-2">
@@ -227,11 +220,13 @@ fetchList();
   border-radius: 5px;
   border: none;
 }
+
 .comfirm-button {
   background: #56d1a5;
   border-radius: 5px;
   border: none;
 }
+
 .comfirm-button:hover,
 .close-button:hover {
   transform: scale(1.1);

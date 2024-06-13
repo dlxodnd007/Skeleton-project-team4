@@ -14,7 +14,7 @@
           :to="{ name: 'home' }"
           class="nav-link d-flex flex-column align-items-center"
         >
-          <div class="home-circle">
+          <div class="home-circle" @click="showReset">
             <img :src="HomeIcon" alt="homeicon" />
           </div>
         </router-link>
@@ -33,6 +33,18 @@
 import HomeIcon from '@/assets/house-door-fill.svg';
 import CategoryIcon from '@/assets/pie-chart-fill.svg';
 import ProfileIcon from '@/assets/person-fill.svg';
+
+import { ref } from 'vue';
+import { useChangeStore } from '@/stores/changedb.js';
+const changeStore = useChangeStore();
+const { fetchListOrder, changeSelectMonth } = changeStore;
+
+function showReset() {
+  const currentMonth = new Date().getMonth() + 1;
+  const selectedMonth = ref(currentMonth);
+  changeSelectMonth(selectedMonth.value);
+  fetchListOrder();
+}
 </script>
 
 <style>
@@ -58,6 +70,7 @@ import ProfileIcon from '@/assets/person-fill.svg';
 .home-circle:hover {
   transform: scale(1.25);
 }
+
 .icon {
   transition: transform 0.4s ease;
 }

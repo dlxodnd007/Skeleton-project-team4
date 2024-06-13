@@ -88,39 +88,11 @@
   ],
   "expenses": [
     {
-      "date": "2024-04-22",
-      "amount": 2200,
-      "category": "식비",
-      "description": "대추차",
-      "id": "edd0"
-    },
-    {
-      "date": "2024-05-27",
-      "amount": 3600,
-      "category": "식비",
-      "description": "대추차",
-      "id": "fd05"
-    },
-    {
-      "date": "2024-04-05",
-      "amount": 2200,
-      "category": "식비",
-      "description": "대추차",
-      "id": "5b1b"
-    },
-    {
       "date": "2024-02-22",
       "amount": 2800,
       "category": "식비",
       "description": "오렌지 주스",
       "id": "ba9c"
-    },
-    {
-      "date": "2024-05-20",
-      "amount": 4300,
-      "category": "식비",
-      "description": "대추차",
-      "id": "946d"
     },
     {
       "date": "2024-03-26",
@@ -144,53 +116,11 @@
       "id": "ab0a"
     },
     {
-      "date": "2024-05-03",
-      "amount": 6700,
-      "category": "식비",
-      "description": "자바칩 프라푸치노",
-      "id": "1ba7"
-    },
-    {
-      "date": "2024-06-10",
-      "amount": 7600,
-      "category": "식비",
-      "description": "유자차",
-      "id": "5f27"
-    },
-    {
       "date": "2024-01-20",
       "amount": 4900,
       "category": "식비",
       "description": "자바칩 프라푸치노",
       "id": "624c"
-    },
-    {
-      "date": "2024-06-11",
-      "amount": 5400,
-      "category": "식비",
-      "description": "아이스바닐라라떼",
-      "id": "22cb"
-    },
-    {
-      "date": "2024-02-26",
-      "amount": 6900,
-      "category": "식비",
-      "description": "아이스바닐라라떼",
-      "id": "cb5c"
-    },
-    {
-      "date": "2024-05-06",
-      "amount": 5400,
-      "category": "식비",
-      "description": "아이스바닐라라떼",
-      "id": "e4e5"
-    },
-    {
-      "date": "2024-05-25",
-      "amount": 3000,
-      "category": "식비",
-      "description": "유자차",
-      "id": "8c39"
     },
     {
       "date": "2024-02-16",
@@ -205,20 +135,6 @@
       "category": "식비",
       "description": "역전우동",
       "id": "b955"
-    },
-    {
-      "date": "2024-04-02",
-      "amount": 33800,
-      "category": "식비",
-      "description": "역전우동",
-      "id": "d05c"
-    },
-    {
-      "date": "2024-04-01",
-      "amount": 37700,
-      "category": "식비",
-      "description": "CU",
-      "id": "9770"
     },
     {
       "date": "2024-03-28",
@@ -249,32 +165,11 @@
       "id": "43f0"
     },
     {
-      "date": "2024-05-24",
-      "amount": 58500,
-      "category": "식비",
-      "description": "역전우동",
-      "id": "878e"
-    },
-    {
-      "date": "2024-02-29",
-      "amount": 50900,
-      "category": "식비",
-      "description": "역전우동",
-      "id": "cb6a"
-    },
-    {
       "date": "2024-03-04",
       "amount": 58100,
       "category": "식비",
       "description": "채선당",
       "id": "7f22"
-    },
-    {
-      "date": "2024-05-26",
-      "amount": 58900,
-      "category": "식비",
-      "description": "CU",
-      "id": "15d2"
     },
     {
       "date": "2024-03-05",
@@ -284,55 +179,6 @@
       "id": "3e13"
     },
     {
-      "date": "2024-05-02",
-      "amount": 39800,
-      "category": "식비",
-      "description": "CU",
-      "id": "217b"
-    },
-    {
-      "date": "2024-05-16",
-      "amount": 28000,
-      "category": "식비",
-      "description": "채선당",
-      "id": "6672"
-    },
-    {
-      "date": "2024-05-13",
-      "amount": 16400,
-      "category": "식비",
-      "description": "서브웨이",
-      "id": "3db3"
-    },
-    {
-      "date": "2024-05-22",
-      "amount": 30500,
-      "category": "식비",
-      "description": "하남돼지",
-      "id": "820e"
-    },
-    {
-      "date": "2024-04-06",
-      "amount": 11100,
-      "category": "식비",
-      "description": "신사골 감자탕",
-      "id": "8e91"
-    },
-    {
-      "date": "2024-06-07",
-      "amount": 47200,
-      "category": "식비",
-      "description": "세종대 학식",
-      "id": "bc0d"
-    },
-    {
-      "date": "2024-05-14",
-      "amount": 19700,
-      "category": "식비",
-      "description": "대박곱창",
-      "id": "0951"
-    },
-    {
       "date": "2024-03-27",
       "amount": 27800,
       "category": "식비",
@@ -340,46 +186,11 @@
       "id": "f6f2"
     },
     {
-      "date": "2024-05-01",
-      "amount": 13100,
-      "category": "식비",
-      "description": "버거킹",
-      "id": "2156"
-    },
-    {
-      "date": "2024-04-11",
-      "amount": 54300,
-      "category": "식비",
-      "description": "CU",
-      "id": "69ea"
-    },
-    {
-      "date": "2024-06-01",
-      "amount": 23100,
-      "category": "식비",
-      "description": "채선당",
-      "id": "85f0"
-    },
-    {
       "date": "2024-01-28",
       "amount": 8600,
       "category": "식비",
       "description": "세종대 학식",
       "id": "65a9"
-    },
-    {
-      "date": "2024-05-03",
-      "amount": 8500,
-      "category": "식비",
-      "description": "신사골 감자탕",
-      "id": "5def"
-    },
-    {
-      "date": "2024-04-25",
-      "amount": 8900,
-      "category": "식비",
-      "description": "세븐일레븐",
-      "id": "a8b2"
     },
     {
       "date": "2024-02-09",
@@ -396,13 +207,6 @@
       "id": "438c"
     },
     {
-      "date": "2024-05-07",
-      "amount": 40200,
-      "category": "식비",
-      "description": "역전우동",
-      "id": "5550"
-    },
-    {
       "date": "2024-02-15",
       "amount": 30300,
       "category": "식비",
@@ -410,25 +214,11 @@
       "id": "6ac9"
     },
     {
-      "date": "2024-06-01",
-      "amount": 15300,
-      "category": "식비",
-      "description": "서브웨이",
-      "id": "9c2b"
-    },
-    {
       "date": "2024-01-05",
       "amount": 45900,
       "category": "식비",
       "description": "버거킹",
       "id": "f438"
-    },
-    {
-      "date": "2024-05-14",
-      "amount": 53500,
-      "category": "식비",
-      "description": "채선당",
-      "id": "ae14"
     },
     {
       "date": "2024-01-04",
@@ -450,13 +240,6 @@
       "category": "식비",
       "description": "하남돼지",
       "id": "71a5"
-    },
-    {
-      "date": "2024-04-27",
-      "amount": 56900,
-      "category": "식비",
-      "description": "역전우동",
-      "id": "3895"
     },
     {
       "date": "2024-03-11",
@@ -522,13 +305,6 @@
       "id": "0145"
     },
     {
-      "date": "2024-05-22",
-      "amount": 51200,
-      "category": "식비",
-      "description": "채선당",
-      "id": "a5da"
-    },
-    {
       "date": "2024-01-17",
       "amount": 11600,
       "category": "식비",
@@ -543,13 +319,6 @@
       "id": "6adb"
     },
     {
-      "date": "2024-04-02",
-      "amount": 51300,
-      "category": "식비",
-      "description": "이마트",
-      "id": "d2d0"
-    },
-    {
       "date": "2024-01-11",
       "amount": 41900,
       "category": "식비",
@@ -557,25 +326,11 @@
       "id": "4d62"
     },
     {
-      "date": "2024-05-09",
-      "amount": 20700,
-      "category": "식비",
-      "description": "홈플러스",
-      "id": "6087"
-    },
-    {
       "date": "2024-01-02",
       "amount": 58900,
       "category": "식비",
       "description": "이마트",
       "id": "1bac"
-    },
-    {
-      "date": "2024-04-16",
-      "amount": 47100,
-      "category": "식비",
-      "description": "이마트",
-      "id": "0720"
     },
     {
       "date": "2024-02-02",
@@ -590,55 +345,6 @@
       "category": "교통비",
       "description": "기후교통카드",
       "id": "95d6"
-    },
-    {
-      "date": "2024-04-02",
-      "amount": 62000,
-      "category": "교통비",
-      "description": "기후교통카드",
-      "id": "e516"
-    },
-    {
-      "date": "2024-05-02",
-      "amount": 62000,
-      "category": "교통비",
-      "description": "기후교통카드",
-      "id": "29a9"
-    },
-    {
-      "date": "2024-06-02",
-      "amount": 62000,
-      "category": "교통비",
-      "description": "기후교통카드",
-      "id": "e6e0"
-    },
-    {
-      "date": "2024-05-03",
-      "amount": 49800,
-      "category": "교통비",
-      "description": "KTX",
-      "id": "e7a8"
-    },
-    {
-      "date": "2024-05-05",
-      "amount": 49800,
-      "category": "교통비",
-      "description": "KTX",
-      "id": "bac8"
-    },
-    {
-      "date": "2024-04-25",
-      "amount": 42300,
-      "category": "이체",
-      "description": "안형진",
-      "id": "a602"
-    },
-    {
-      "date": "2024-02-25",
-      "amount": 41800,
-      "category": "이체",
-      "description": "유수빈",
-      "id": "141b"
     },
     {
       "date": "2024-02-20",
@@ -676,20 +382,6 @@
       "id": "053f"
     },
     {
-      "date": "2024-04-14",
-      "amount": 30400,
-      "category": "이체",
-      "description": "신인정",
-      "id": "e65f"
-    },
-    {
-      "date": "2024-04-19",
-      "amount": 48800,
-      "category": "이체",
-      "description": "안성수",
-      "id": "1d14"
-    },
-    {
       "date": "2024-03-01",
       "amount": 42200,
       "category": "이체",
@@ -704,32 +396,11 @@
       "id": "4a34"
     },
     {
-      "date": "2024-05-07",
-      "amount": 4600,
-      "category": "이체",
-      "description": "유수빈",
-      "id": "1eeb"
-    },
-    {
       "date": "2024-01-24",
       "amount": 22500,
       "category": "이체",
       "description": "안성수",
       "id": "4ee8"
-    },
-    {
-      "date": "2024-05-20",
-      "amount": 37800,
-      "category": "이체",
-      "description": "허정태",
-      "id": "5c38"
-    },
-    {
-      "date": "2024-04-09",
-      "amount": 27100,
-      "category": "이체",
-      "description": "안성수",
-      "id": "f50a"
     },
     {
       "date": "2024-02-04",
@@ -746,53 +417,11 @@
       "id": "f2da"
     },
     {
-      "date": "2024-04-04",
-      "amount": 100000,
-      "category": "적금",
-      "description": "주택청약",
-      "id": "eea0"
-    },
-    {
-      "date": "2024-05-04",
-      "amount": 100000,
-      "category": "적금",
-      "description": "주택청약",
-      "id": "289a"
-    },
-    {
-      "date": "2024-06-04",
-      "amount": 100000,
-      "category": "적금",
-      "description": "주택청약",
-      "id": "9b66"
-    },
-    {
       "date": "2024-02-15",
       "amount": 33700,
       "category": "쇼핑",
       "description": "아디다스",
       "id": "6fb7"
-    },
-    {
-      "date": "2024-06-06",
-      "amount": 48400,
-      "category": "쇼핑",
-      "description": "다이소",
-      "id": "2dbe"
-    },
-    {
-      "date": "2024-04-12",
-      "amount": 97400,
-      "category": "쇼핑",
-      "description": "뉴발란스",
-      "id": "4744"
-    },
-    {
-      "date": "2024-04-25",
-      "amount": 40200,
-      "category": "쇼핑",
-      "description": "아트박스",
-      "id": "aac3"
     },
     {
       "date": "2024-03-18",
@@ -807,27 +436,6 @@
       "category": "쇼핑",
       "description": "무신사",
       "id": "2ef2"
-    },
-    {
-      "date": "2024-04-17",
-      "amount": 43000,
-      "category": "쇼핑",
-      "description": "아트박스",
-      "id": "98c4"
-    },
-    {
-      "date": "2024-05-15",
-      "amount": 51000,
-      "category": "쇼핑",
-      "description": "무신사",
-      "id": "2525"
-    },
-    {
-      "date": "2024-06-01",
-      "amount": 54300,
-      "category": "쇼핑",
-      "description": "나이키",
-      "id": "48cc"
     },
     {
       "date": "2024-01-05",
@@ -849,13 +457,6 @@
       "category": "쇼핑",
       "description": "아트박스",
       "id": "b91d"
-    },
-    {
-      "date": "2024-02-26",
-      "amount": 83300,
-      "category": "쇼핑",
-      "description": "아디다스",
-      "id": "2870"
     },
     {
       "date": "2024-01-23",

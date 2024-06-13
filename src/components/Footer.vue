@@ -44,11 +44,11 @@ import ProfileIcon from '@/assets/person-fill.svg';
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(
-    45deg,
-    rgba(19, 63, 219, 0.5),
-    rgba(183, 0, 77, 0.4)
-  );
+    background: linear-gradient(
+      45deg,
+      rgba(19, 63, 219, 0.5),
+      rgba(183, 0, 77, 0.4)
+    );
   display: flex;
   align-items: center;
   justify-content: center;

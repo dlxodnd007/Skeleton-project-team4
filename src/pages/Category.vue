@@ -211,11 +211,13 @@ watch(
   color: #504e64;
   margin: 8px 0px 0px 0px;
 }
+
 .emphasis {
   font-weight: 700;
   font-size: 25px;
   color: #0dc9b9;
 }
+
 .monthSelect {
   width: 62px;
   border: 1px solid #c9c9c9;
@@ -255,12 +257,14 @@ watch(
   width: 100%;
   text-align: left;
 }
+
 .categoryList li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 14px 0;
 }
+
 .circle {
   display: inline-block;
   width: 45px;
@@ -272,10 +276,12 @@ watch(
   justify-content: center;
   align-items: center;
 }
+
 .categoryName {
   flex-grow: 1;
   padding-left: 10px;
 }
+
 .categoryText {
   font-size: 18px;
   color: #504e64;

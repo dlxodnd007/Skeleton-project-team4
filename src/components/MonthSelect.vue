@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, computed } from 'vue';
+import { ref, computed } from 'vue';
 const currentMonth = new Date().getMonth() + 1;
 const currentYear = new Date().getFullYear();
 const selectedMonth = ref(currentMonth);

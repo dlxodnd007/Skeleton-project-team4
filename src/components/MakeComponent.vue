@@ -111,10 +111,6 @@ const handleDeleteClick = async (index, type) => {
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center; 
-}
-
-.delete-button:hover {
-  background-color: #d32f2f;
+  justify-content: center;
 }
 </style>

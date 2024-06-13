@@ -193,9 +193,6 @@ const user = computed(() => accountBookUser.user);
   font-weight: bold;
 }
 
-#name-with-icon {
-}
-
 #edit-icon {
   display: inline-block;
   font-size: 15px;

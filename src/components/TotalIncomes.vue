@@ -6,10 +6,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import axios from 'axios';
+import { computed } from 'vue';
 
 import { useChangeStore } from '@/stores/changedb.js';
+
 const changeStore = useChangeStore();
 const orderedDate = computed(() => changeStore.computedOrderedDate);
 

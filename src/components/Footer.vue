@@ -34,8 +34,7 @@ import HomeIcon from '@/assets/house-door-fill.svg';
 import CategoryIcon from '@/assets/pie-chart-fill.svg';
 import ProfileIcon from '@/assets/person-fill.svg';
 
-import axios from 'axios';
-import { ref, computed, watch } from 'vue';
+import { ref } from 'vue';
 import { useChangeStore } from '@/stores/changedb.js';
 const changeStore = useChangeStore();
 const { fetchListOrder, changeSelectMonth } = changeStore;
@@ -71,6 +70,7 @@ function showReset() {
 .home-circle:hover {
   transform: scale(1.25);
 }
+
 .icon {
   transition: transform 0.4s ease;
 }

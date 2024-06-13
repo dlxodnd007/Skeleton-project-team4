@@ -7,8 +7,6 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import { ref } from 'vue';
 import MakeComponent from '@/components/MakeComponent.vue';
 </script>
 
@@ -18,6 +16,7 @@ ul {
   overflow-y: auto;
   border-radius: 15px;
 }
+
 ul::-webkit-scrollbar {
   display: none;
 }

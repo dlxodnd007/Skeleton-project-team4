@@ -44,12 +44,14 @@ function hideModal() {
     top: 0;
     left: 0;
 } */
+
 .summary-area {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
 }
+
 .button-area {
   position: absolute;
   bottom: 100px;
@@ -57,6 +59,7 @@ function hideModal() {
   transition: transform 0.4s ease;
   opacity: 0.8;
 }
+
 .button-area:hover {
   transform: scale(1.2);
   opacity: 1;

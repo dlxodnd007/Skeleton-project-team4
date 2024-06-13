@@ -6,20 +6,7 @@
     "income_goal": 9000,
     "expense_goal": 9000
   },
-  "income": [
-    {
-      "date": "2024-06-01",
-      "amount": 300000,
-      "description": "용돈",
-      "id": "2150"
-    },
-    {
-      "id": "64bb",
-      "date": "2024-07-01",
-      "description": "테스트1",
-      "amount": 1000
-    }
-  ],
+  "income": [],
   "expenses": [
     {
       "date": "2024-02-22",

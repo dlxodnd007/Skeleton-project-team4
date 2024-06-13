@@ -8,7 +8,6 @@ export const useAccountBookStore = defineStore('accountBook', () => {
     expenses: [],
   });
 
-  // localhost:3000
   const BASEURL_INCOME = '/api/income';
   const BASEURL_EXPENSE = '/api/expenses';
 
@@ -35,12 +34,10 @@ export const useAccountBookStore = defineStore('accountBook', () => {
   const accountBookIncome = computed(() => state.income);
   const accountBookExpenses = computed(() => state.expenses);
 
-  // Calculate total income
   const totalIncome = computed(() => {
     return state.income.reduce((total, item) => total + item.amount, 0);
   });
 
-  // Calculate total expenses
   const totalExpenses = computed(() => {
     return state.expenses.reduce((total, item) => total + item.amount, 0);
   });

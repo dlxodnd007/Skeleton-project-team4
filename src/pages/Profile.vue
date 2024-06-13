@@ -36,16 +36,17 @@
       </div>
     </div>
     <div v-if="isShowNameToggle" id="name-with-icon">
-      <h2 id="name" @click="toggleEditMode()">
+      <h2 id="name">
         {{ user.name }}
-        <div id="edit-icon">✏</div>
+        <div id="edit-icon" @click="toggleEditMode()" style="cursor: pointer">
+          ✏
+        </div>
       </h2>
     </div>
 
     <div class="inputBtns" v-if="editingMode">
-      <input type="text" v-model.trim="newName" />
-      <!-- <button @click="editNameHandler()">변경</button>
-      <button @click="toggleEditMode">취소</button> -->
+      <input type="text" style="width: 100px" v-model.trim="newName" />
+
       <div
         @click="editNameHandler()"
         class="main-btn"
@@ -150,16 +151,22 @@ function editGoalHandler() {
 
 function editNameHandler() {
   editName(newName.value);
+  isShowNameToggle.value = !isShowNameToggle.value;
+  editingMode.value = !editingMode.value;
   newName.value = '';
 }
 
 function toggleAvatarWithName() {
+  if (avatarEditingMode.value == isShowNameToggle.value) {
+    isShowNameToggle.value = !isShowNameToggle.value;
+  }
   avatarEditingMode.value = !avatarEditingMode.value;
-  isShowName();
+  isShowNameToggle.value = !isShowNameToggle.value;
 }
 
 function toggleEditMode() {
   editingMode.value = !editingMode.value;
+  isShowNameToggle.value = !isShowNameToggle.value;
 }
 
 function toggleGoalEdit() {
@@ -184,7 +191,6 @@ const user = computed(() => accountBookUser.user);
   padding-top: 20px;
 
   font-weight: bold;
-  cursor: pointer;
 }
 
 #name-with-icon {

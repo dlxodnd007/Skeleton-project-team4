@@ -9,15 +9,6 @@ export const useUserStore = defineStore('user', () => {
 
   // localhost:3000
   const BASEURL = '/api/user';
-  // const avartar1 = ref('');
-  // const avartar2 = ref('');
-  // const avartar3 = ref('');
-  // const avartar4 = ref('');
-
-  // avartar1.value = '@/asset/images/avatar1.png';
-  // avartar2.value = '@/asset/images/avatar2.png';
-  // avartar3.value = '@/asset/images/avatar3.png';
-  // avartar4.value = '@/asset/images/avatar4.png';
 
   async function fetchUserData() {
     try {
@@ -31,6 +22,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function editName(newName) {
+    if (newName === '') return alert('이름을 입력해주세요.');
     try {
       const payload = { ...state.user, name: newName };
 
@@ -42,29 +34,68 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  async function editIncomeGoal(newGoal) {
+  async function editGoal(newIncomeGoal, newExpenseGoal) {
+    console.log(newIncomeGoal, newExpenseGoal);
+    if (newIncomeGoal === '' && newExpenseGoal === '')
+      return alert('목표금액을 입력해주세요.');
+
     try {
-      const payload = { ...state.user, income_goal: newGoal };
+      const fetchGoalDataRes = await axios.get(BASEURL);
+      let pastIncomeGoalData = fetchGoalDataRes.data.income_goal;
+      let pastExpenseGoalData = fetchGoalDataRes.data.expense_goal;
+      let payload = {};
+
+      if (newIncomeGoal === '') {
+        payload = {
+          ...state.user,
+          income_goal: pastIncomeGoalData,
+          expense_goal: newExpenseGoal,
+        };
+      } else if (newExpenseGoal === '') {
+        payload = {
+          ...state.user,
+          income_goal: newIncomeGoal,
+          expense_goal: pastExpenseGoalData,
+        };
+      } else {
+        payload = {
+          ...state.user,
+          income_goal: newIncomeGoal,
+          expense_goal: newExpenseGoal,
+        };
+      }
 
       const response = await axios.put(`${BASEURL}`, payload);
       fetchUserData();
     } catch (error) {
-      alert('수입목표 변경 오류발생');
+      alert('목표 변경 오류발생');
       console.log(error);
     }
   }
 
-  async function editExpenseGoal(newGoal) {
-    try {
-      const payload = { ...state.user, expense_goal: newGoal };
+  // async function editIncomeGoal(newGoal) {
+  //   try {
+  //     const payload = { ...state.user, income_goal: newGoal };
 
-      const response = await axios.put(`${BASEURL}`, payload);
-      fetchUserData();
-    } catch (error) {
-      alert('지출목표 변경 오류발생');
-      console.log(error);
-    }
-  }
+  //     const response = await axios.put(`${BASEURL}`, payload);
+  //     fetchUserData();
+  //   } catch (error) {
+  //     alert('수입목표 변경 오류발생');
+  //     console.log(error);
+  //   }
+  // }
+
+  // async function editExpenseGoal(newGoal) {
+  //   try {
+  //     const payload = { ...state.user, expense_goal: newGoal };
+
+  //     const response = await axios.put(`${BASEURL}`, payload);
+  //     fetchUserData();
+  //   } catch (error) {
+  //     alert('지출목표 변경 오류발생');
+  //     console.log(error);
+  //   }
+  // }
 
   async function editCharacter(newCharacter) {
     try {
@@ -84,8 +115,9 @@ export const useUserStore = defineStore('user', () => {
     fetchUserData,
     accountBookUser,
     editName,
-    editIncomeGoal,
-    editExpenseGoal,
+    // editIncomeGoal,
+    // editExpenseGoal,
     editCharacter,
+    editGoal,
   };
 });

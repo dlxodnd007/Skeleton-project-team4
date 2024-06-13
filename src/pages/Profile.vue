@@ -1,134 +1,174 @@
 <template>
-  <div class="profile-header">
-    <div class="profile-img-container">
-      <div id="top-image-btn">
-        <img :src="user.profilePicture" alt="Profile" class="profile-img" />
-        <button @click="toggleAvatarWithName" class="profile-img-button">
-          +
-        </button>
-      </div>
-
-      <div id="avatars" v-if="avatarEditingMode">
-        <img
-          @click="editCharacter('/src/asset/images/avatar1.png')"
-          class="avatar"
-          src="@/asset/images/avatar1.png"
-          alt="avatar1"
-        />
-        <img
-          @click="editCharacter('/src/asset/images/avatar2.png')"
-          class="avatar"
-          src="@/asset/images/avatar2.png"
-          alt="avatar2"
-        />
-        <img
-          @click="editCharacter('/src/asset/images/avatar3.png')"
-          class="avatar"
-          src="@/asset/images/avatar3.png"
-          alt="avatar3"
-        />
-        <img
-          @click="editCharacter('/src/asset/images/avatar4.png')"
-          class="avatar"
-          src="@/asset/images/avatar4.png"
-          alt="avatar4"
-        />
-      </div>
-    </div>
-    <div v-if="isShowNameToggle" id="name-with-icon">
-      <h2 id="name">
-        {{ user.name }}
-        <div id="edit-icon" @click="toggleEditMode()" style="cursor: pointer">
-          ✏
+  <div id="profile-page-container">
+    <div class="profile-header">
+      <div class="profile-img-container">
+        <div id="top-image-btn">
+          <img :src="user.profilePicture" alt="Profile" class="profile-img" />
+          <button @click="toggleAvatarWithName" class="profile-img-button">
+            <h3 style="line-height: 8px">
+              {{ avatarEditingMode ? '-' : '+' }}
+            </h3>
+          </button>
         </div>
-      </h2>
-    </div>
 
-    <div class="inputBtns" v-if="editingMode">
-      <input type="text" style="width: 100px" v-model.trim="newName" />
-
-      <div
-        @click="editNameHandler()"
-        class="main-btn"
-        style="color: aliceblue; width: 40px"
-      >
-        변경
+        <div id="avatars" v-if="avatarEditingMode">
+          <img
+            @click="editCharacter('/src/asset/images/avatar1.png')"
+            class="avatar"
+            src="@/asset/images/avatar1.png"
+            alt="avatar1"
+          />
+          <img
+            @click="editCharacter('/src/asset/images/avatar2.png')"
+            class="avatar"
+            src="@/asset/images/avatar2.png"
+            alt="avatar2"
+          />
+          <img
+            @click="editCharacter('/src/asset/images/avatar3.png')"
+            class="avatar"
+            src="@/asset/images/avatar3.png"
+            alt="avatar3"
+          />
+          <img
+            @click="editCharacter('/src/asset/images/avatar4.png')"
+            class="avatar"
+            src="@/asset/images/avatar4.png"
+            alt="avatar4"
+          />
+        </div>
       </div>
-      <div
-        @click="toggleEditMode"
-        class="main-btn"
-        style="background-color: #d7f0e7; color: #56d1a5; width: 40px"
-      >
-        취소
+      <div v-if="isShowNameToggle" id="name-with-icon">
+        <h2 id="name">
+          {{ user.name }}
+          <div id="edit-icon" @click="toggleEditMode()" style="cursor: pointer">
+            ✏
+          </div>
+        </h2>
       </div>
-    </div>
 
-    <br />
-    <div class="main-btn-container">
-      <button id="logout" class="main-btn" style="color: aliceblue">
-        🔐로그아웃
-      </button>
-      <button
-        @click="toggleGoalEdit()"
-        class="main-btn"
-        style="color: aliceblue"
-      >
-        📑목표수정
-      </button>
-    </div>
-    <div class="goal">
-      <h3 style="font-weight: bold">목표</h3>
-      <div id="content">
-        <span>
-          <span style="font-weight: bold; font-size: 16px"
-            >💰이번달 목표 수입금액:</span
-          >
-          <br />
-          <h3 @click="toggleIncomeEdit" style="font-weight: bold">
-            ₩ {{ user.income_goal.toLocaleString() }}
-          </h3>
-          <div class="inputBtns" v-if="goalEditingMode">
-            <input type="text" v-model.trim.number="newIncomeGoal" />
-          </div>
-          <br />
-        </span>
+      <div class="inputBtns" v-if="editingMode">
+        <input
+          type="text"
+          id="name-input"
+          style="margin: 6.5px"
+          v-model.trim="newName"
+          ref="nameChangeInput"
+        />
+        <br />
 
-        <span>
-          <span style="font-weight: bold; font-size: 16px"
-            >💸이번달 목표 지출금액:</span
-          >
-          <br />
-          <h3 style="font-weight: bold">
-            ₩ {{ user.expense_goal.toLocaleString() }}
-          </h3>
-          <div class="inputBtns" v-if="goalEditingMode">
-            <input type="text" v-model.trim.number="newExpenseGoal" />
-          </div>
-        </span>
-        <div v-if="goalEditingMode" class="main-btn-container">
-          <div
-            @click="editGoalHandler"
+        <div
+          @click="editNameHandler()"
+          class="main-btn"
+          style="
+            color: aliceblue;
+            line-height: 200%;
+            width: 70px;
+            margin: 2px;
+            height: 30px;
+          "
+        >
+          변경
+        </div>
+        <div
+          @click="toggleEditMode"
+          class="main-btn"
+          style="
+            background-color: #d7f0e7;
+            color: #56d1a5;
+            line-height: 200%;
+            width: 70px;
+            margin: 2px;
+            height: 30px;
+          "
+        >
+          취소
+        </div>
+      </div>
+
+      <div id="goal-to-logout">
+        <div class="main-btn-container">
+          <button
+            @click="toggleGoalEdit()"
             class="main-btn"
+            id="goal-change"
             style="color: aliceblue"
           >
-            변경
-          </div>
-          <div
-            @click="toggleGoalEdit"
-            class="main-btn"
-            id="name-cancle-btn"
-            style="background-color: #d7f0e7; color: #56d1a5"
-          >
-            취소
+            📑목표수정
+          </button>
+        </div>
+        <div class="goal">
+          <h3 style="font-weight: bold">목표</h3>
+          <div id="content">
+            <span>
+              <span style="font-weight: bold; font-size: 16px"
+                >💰이번달 목표 수입금액:</span
+              >
+              <br />
+              <h3 @click="toggleIncomeEdit" style="font-weight: bold">
+                ₩ {{ user.income_goal.toLocaleString() }}
+              </h3>
+              <div v-if="goalEditingMode">
+                <input
+                  class="inputBtn"
+                  type="text"
+                  v-model.trim.number="newIncomeGoal"
+                  ref="incomeGoalChangeInput"
+                />
+              </div>
+              <br />
+            </span>
+
+            <span>
+              <span style="font-weight: bold; font-size: 16px"
+                >💸이번달 목표 지출금액:</span
+              >
+              <br />
+              <h3 style="font-weight: bold">
+                ₩ {{ user.expense_goal.toLocaleString() }}
+              </h3>
+              <div v-if="goalEditingMode">
+                <input
+                  class="inputBtn"
+                  type="text"
+                  v-model.trim.number="newExpenseGoal"
+                  ref="expenseGoalChangeInput"
+                />
+              </div>
+            </span>
+            <div v-if="goalEditingMode" class="main-btn-container">
+              <div
+                @click="editGoalHandler"
+                class="main-btn"
+                style="color: aliceblue"
+              >
+                변경
+              </div>
+              <div
+                @click="toggleGoalEdit"
+                class="main-btn"
+                id="name-cancle-btn"
+                style="background-color: #d7f0e7; color: #56d1a5"
+              >
+                취소
+              </div>
+            </div>
           </div>
         </div>
+        <button
+          id="logout"
+          class="main-btn"
+          style="color: aliceblue; background-color: #bdbdbd"
+        >
+          🔐로그아웃
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import { useUserStore } from '@/stores/user.js';
 const userStore = useUserStore();
 const { fetchUserData, accountBookUser, editName, editCharacter, editGoal } =
@@ -142,6 +182,13 @@ const goalEditingMode = ref('');
 const newIncomeGoal = ref('');
 const newExpenseGoal = ref('');
 const isShowNameToggle = ref(true);
+const nameChangeInput = ref(null);
+const incomeGoalChangeInput = ref(null);
+const expenseGoalChangeInput = ref(null);
+
+fetchUserData();
+
+const user = computed(() => accountBookUser.user);
 
 function editGoalHandler() {
   editGoal(newIncomeGoal.value, newExpenseGoal.value);
@@ -157,8 +204,9 @@ function editNameHandler() {
 }
 
 function toggleAvatarWithName() {
-  if (avatarEditingMode.value == isShowNameToggle.value) {
-    isShowNameToggle.value = !isShowNameToggle.value;
+  if (editingMode.value === true) {
+    avatarEditingMode.value = !avatarEditingMode.value;
+    return (isShowNameToggle.value = false);
   }
   avatarEditingMode.value = !avatarEditingMode.value;
   isShowNameToggle.value = !isShowNameToggle.value;
@@ -167,19 +215,35 @@ function toggleAvatarWithName() {
 function toggleEditMode() {
   editingMode.value = !editingMode.value;
   isShowNameToggle.value = !isShowNameToggle.value;
+  newName.value = user.value.name;
+  nextTick(() => {
+    if (nameChangeInput.value) {
+      nameChangeInput.value.focus();
+      nameChangeInput.value.select();
+    }
+  });
 }
 
 function toggleGoalEdit() {
   goalEditingMode.value = !goalEditingMode.value;
+
+  // // 목표값이 각각 나오게 하기
+  // newIncomeGoal.value = user.value.income_goal;
+  // newExpenseGoal.value = user.value.expense_goal;
+  // // 포커스가고, select할 수 있도록 하기
+  // nextTick(() => {
+  //   incomeGoalChangeInput.value.focus();
+  //   incomeGoalChangeInput.value.select();
+  // });
+  // nextTick(() => {
+  //   expenseGoalChangeInput.value.focus();
+  //   expenseGoalChangeInput.value.select();
+  // });
 }
 
 function isShowName() {
   isShowNameToggle.value = !isShowNameToggle.value;
 }
-
-fetchUserData();
-
-const user = computed(() => accountBookUser.user);
 </script>
 
 <style lang="scss" scoped>
@@ -187,26 +251,43 @@ const user = computed(() => accountBookUser.user);
   width: 80%;
 }
 
-#name {
-  padding-top: 20px;
-
-  font-weight: bold;
+#profile-page-container {
+  width: 300px;
+  position: relative;
 }
 
 #name-with-icon {
+  position: relative;
+  height: 50px;
+}
+
+#name {
+  position: absolute;
+  width: 150px;
+  padding-top: 5px;
+  font-weight: bold;
+  left: 72px;
 }
 
 #edit-icon {
+  position: absolute;
   display: inline-block;
   font-size: 15px;
   padding: 0;
   margin: 0;
 }
 
+#name-input {
+  width: 60px;
+  height: 35px;
+}
+
 .main-btn-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  height: 60px;
 }
 
 #avatars {
@@ -225,7 +306,8 @@ const user = computed(() => accountBookUser.user);
 }
 
 .inputBtns {
-  width: 350px;
+  width: 300px;
+  position: relative;
 }
 
 .goal-change-btn {
@@ -239,7 +321,7 @@ const user = computed(() => accountBookUser.user);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 140px;
+  width: 280px;
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -255,11 +337,13 @@ const user = computed(() => accountBookUser.user);
 }
 
 .profile-header {
+  position: relative;
+  position: absolute;
+  top: 10px;
   text-align: center;
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .profile-img-container {
@@ -284,7 +368,6 @@ const user = computed(() => accountBookUser.user);
   position: absolute;
   top: 52px;
   right: 87px;
-
   width: 30px;
   height: 30px;
   border: none;
@@ -316,8 +399,6 @@ const user = computed(() => accountBookUser.user);
 }
 
 .goal {
-  margin-top: 20px;
-  padding: 10px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -335,6 +416,12 @@ const user = computed(() => accountBookUser.user);
   text-align: left;
   margin-left: 20px;
   font-size: 14px;
+}
+
+#goal-to-logout {
+  position: absolute;
+  width: 300px;
+  top: 200px;
 }
 
 #content span {

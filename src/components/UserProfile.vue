@@ -30,10 +30,12 @@ const fetchUser = async () => {
     console.error('There was an error fetching the user data:', error);
   }
 };
+
 onMounted(() => {
   fetchUser();
 });
 </script>
+
 <style scoped>
 .profile-panel {
   display: flex;
@@ -41,6 +43,7 @@ onMounted(() => {
   padding: 1rem;
   justify-content: center;
 }
+
 .profile-wrapper {
   width: 66px;
   height: 66px;
@@ -49,12 +52,14 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
 }
+
 .profile-image {
   border-radius: 50%;
   width: 82%;
   height: 82%;
   object-fit: cover;
 }
+
 .gradient-circle {
   position: absolute;
   top: 0;

@@ -1,5 +1,7 @@
 <template>
   <div class="home-container">
+    <UserProfile class="header" />
+
     <MonthSelect v-model="selectedMonth" />
 
     <ModalComponents :visible="isModalVisible" @close-modal="hideModal" />
@@ -15,6 +17,7 @@
 </template>
 
 <script setup>
+import UserProfile from '@/components/UserProfile.vue';
 import AddButton from '@/components/AddButton.vue';
 import { ref } from 'vue';
 import ModalComponents from '@/components/Modal.vue';
@@ -37,12 +40,18 @@ function hideModal() {
 </script>
 
 <style scoped>
+/* .header {
+    top: 0;
+    left: 0;
+} */
+
 .summary-area {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
 }
+
 .button-area {
   position: absolute;
   bottom: 100px;
@@ -50,6 +59,7 @@ function hideModal() {
   transition: transform 0.4s ease;
   opacity: 0.8;
 }
+
 .button-area:hover {
   transform: scale(1.2);
   opacity: 1;

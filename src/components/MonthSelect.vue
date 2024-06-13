@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, computed } from 'vue';
+import { ref, computed } from 'vue';
 const currentMonth = new Date().getMonth() + 1;
 const currentYear = new Date().getFullYear();
 const selectedMonth = ref(currentMonth);
@@ -28,9 +28,8 @@ const years = Array.from({ length: 3 }, (_, i) => currentYear - i).reverse();
 import { useChangeStore } from '@/stores/changedb.js';
 
 const changeStore = useChangeStore();
-const { fetchListOrder } = changeStore;
+const { fetchListOrder, changeSelectMonth } = changeStore;
 const months = computed(() => changeStore.months);
-changeStore.select_month = selectedMonth;
 
 // const months = ref([
 //     { value: 1, label: "1월" },
@@ -53,5 +52,6 @@ const updateYear = () => {
 const updateMonth = () => {
   console.log('선택된 월:', selectedMonth.value);
   fetchListOrder();
+  changeSelectMonth(selectedMonth.value);
 };
 </script>

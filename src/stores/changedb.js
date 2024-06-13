@@ -3,9 +3,13 @@ import axios from 'axios';
 import { defineStore } from 'pinia';
 
 export const useChangeStore = defineStore('changedb', () => {
+  const currentMonth = new Date().getMonth() + 1;
   const transaction = ref([]);
   const orderedDate = ref([]);
-  const select_month = ref(0);
+  const tmp = ref([]);
+  const tot_income = ref(0);
+  const tot_expenses = ref(0);
+  const select_month = ref(currentMonth);
   const months = ref([
     { value: 1, label: '1월' },
     { value: 2, label: '2월' },
@@ -24,6 +28,9 @@ export const useChangeStore = defineStore('changedb', () => {
   async function fetchListOrder() {
     transaction.value = [];
     orderedDate.value = [];
+    tmp.value = [];
+    tot_income.value = 0;
+    tot_expenses.value = 0;
 
     try {
       const url_income = 'http://localhost:3000/income';
@@ -33,7 +40,7 @@ export const useChangeStore = defineStore('changedb', () => {
       for (let i = 0; i < user_income.data.length; i++) {
         user_income.data[i].check = '입금';
         user_income.data[i].mark = '+';
-        delete user_income.data[i].id;
+        // delete user_income.data[i].id;
         transaction.value.push(user_income.data[i]);
       }
 
@@ -44,7 +51,7 @@ export const useChangeStore = defineStore('changedb', () => {
       for (let i = 0; i < user_expenses.data.length; i++) {
         user_expenses.data[i].check = '지출';
         user_expenses.data[i].mark = '-';
-        delete user_expenses.data[i].id;
+        // d    elete user_expenses.data[i].id;
         transaction.value.push(user_expenses.data[i]);
       }
       // console.log("transaction", transaction.value);
@@ -53,18 +60,52 @@ export const useChangeStore = defineStore('changedb', () => {
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .reverse();
 
+      for (let i = 0; i < orderedDate.value.length; i++) {
+        if (
+          Number(orderedDate.value[i].date.slice(5, 7)) === select_month.value
+        ) {
+          tmp.value.push(orderedDate.value[i]);
+        }
+      }
+      console.log('tmp : ', tmp.value);
+      orderedDate.value = [...tmp.value];
+
       console.log('orderedDate', orderedDate.value);
+
+      for (let i = 0; i < orderedDate.value.length; i++) {
+        if (orderedDate.value[i].mark === '+') {
+          tot_income.value = tot_income.value + orderedDate.value[i].amount;
+        }
+      }
+      console.log('+++++++++', tot_income.value);
+
+      for (let i = 0; i < orderedDate.value.length; i++) {
+        if (orderedDate.value[i].mark === '-') {
+          tot_expenses.value = tot_expenses.value + orderedDate.value[i].amount;
+        }
+      }
+      console.log('---------', tot_expenses.value);
     } catch (e) {
       alert('데이터 불러오기 문제 발생!');
       console.log(e);
     }
   }
+
+  function changeSelectMonth(month) {
+    select_month.value = month;
+  }
+
+  const computedOrderedDate = computed(() => orderedDate.value);
+
   fetchListOrder();
   return {
     transaction,
-    orderedDate,
+    computedOrderedDate,
     months,
     select_month,
+    tot_income,
+    tot_expenses,
+    changeSelectMonth,
     fetchListOrder,
   };
 });

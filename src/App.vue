@@ -1,12 +1,10 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import UserProfile from '@/components/UserProfile.vue';
+import { RouterView } from 'vue-router';
 import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
   <div>
-    <UserProfile class="header" />
     <RouterView />
     <Footer class="footer" />
   </div>

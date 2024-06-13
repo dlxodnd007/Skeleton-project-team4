@@ -6,29 +6,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { computed } from 'vue';
 
-const totalIncomes = ref(null);
+import { useChangeStore } from '@/stores/changedb.js';
+
+const changeStore = useChangeStore();
+const orderedDate = computed(() => changeStore.computedOrderedDate);
+
+const totalIncomes = computed(() => changeStore.tot_income);
+
 const formatNumber = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
-
-const fetchIncomes = async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/income');
-    totalIncomes.value = response.data.reduce(
-      (acc, income) => acc + income.amount,
-      0
-    );
-  } catch (error) {
-    console.error('수입 데이터를 가져오는 중 오류가 발생했습니다:', error);
-  }
-};
-
-onMounted(() => {
-  fetchIncomes();
-});
 </script>
 
 <style scoped>

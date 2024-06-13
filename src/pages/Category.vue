@@ -1,18 +1,26 @@
 <template>
   <div>
-    <select class="monthSelect" v-model="selectedMonth" @change="changeMonth">
+    <select class="year-select" v-model="selectedYear">
+      <option v-for="year in selectYear" :value="year" :key="year">
+        {{ year }}년
+      </option>
+    </select>
+    <select class="month-select" v-model="selectedMonth" @change="changeMonth">
       <option v-for="month in 12" :value="month" :key="month">
         {{ month }}월
       </option>
     </select>
-    <div class="title">가장 많은 지출을 한 카테고리는</div>
-    <div class="title">
+    <div class="title" v-if="shouldShowMostCategory">
+      가장 많은 지출을 한 카테고리는<br />
       <span class="emphasis" :style="{ color: activeColor }">{{
         mostSpentCategory
       }}</span
       >입니다!
     </div>
-    <div class="chartContainer">
+    <div class="title equal-height" v-if="shouldShowText">
+      이번 달은 <br />지출 내역이 없습니다!
+    </div>
+    <div class="chart-container">
       <DoughnutChart
         :chart-data="chartData"
         :chart-options="chartOptions"
@@ -21,20 +29,22 @@
       />
     </div>
 
-    <ul class="categoryList">
+    <ul class="category-list">
       <li v-for="expenses in reactiveExpensesArray" :key="expenses.id">
         <span class="circle" :style="{ backgroundColor: expenses.color }">
           {{ expenses.percentage }}%
         </span>
-        <span class="categoryName categoryText">{{ expenses.category }}</span>
-        <span class="categoryText">{{ expenses.amount.toLocaleString() }}</span>
+        <span class="category-name category-text">{{ expenses.category }}</span>
+        <span class="category-text">{{
+          expenses.amount.toLocaleString()
+        }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, watch, onMounted, computed } from 'vue';
+import { ref, reactive, watch, computed } from 'vue';
 import { useAccountBookStore } from '@/stores/accountBook.js';
 import DoughnutChart from '@/components/DoughnutChart.vue';
 
@@ -44,8 +54,10 @@ const { fetchExpenseData } = accountBookStore;
 const mostSpentCategory = ref('');
 const totalAmount = ref(0);
 const selectedMonth = ref(new Date().getMonth() + 1);
+const selectedYear = ref(new Date().getFullYear());
 const activeColor = ref('');
 const chartDataKey = ref(0);
+const selectYear = [2022, 2023, 2024];
 
 const chartData = reactive({
   labels: [],
@@ -167,13 +179,17 @@ function updateData(month) {
     reactiveExpensesArray.find((item) => item.category === '이체').percentage =
       Math.round((transferExpenses / totalAmount.value) * 100);
 
-    chartData.labels = reactiveExpensesArray.map((item) => item.category);
-    chartData.datasets[0].data = reactiveExpensesArray.map(
-      (item) => item.amount
-    );
-    chartData.datasets[0].backgroundColor = reactiveExpensesArray.map(
-      (item) => item.color
-    );
+    chartData.labels = reactiveExpensesArray
+      .sort((a, b) => b.amount - a.amount)
+      .map((item) => item.category);
+
+    chartData.datasets[0].data = reactiveExpensesArray
+      .sort((a, b) => b.amount - a.amount)
+      .map((item) => item.amount);
+
+    chartData.datasets[0].backgroundColor = reactiveExpensesArray
+      .sort((a, b) => b.amount - a.amount)
+      .map((item) => item.color);
   }
 
   activeColor.value = reactiveExpensesArray.sort(
@@ -186,6 +202,14 @@ function updateData(month) {
 
   chartDataKey.value += 1;
 }
+
+const shouldShowMostCategory = computed(() => {
+  return totalAmount.value !== 0;
+});
+
+const shouldShowText = computed(() => {
+  return totalAmount.value === 0;
+});
 
 function changeMonth() {
   updateData(selectedMonth.value);
@@ -211,12 +235,13 @@ watch(
   color: #504e64;
   margin: 8px 0px 0px 0px;
 }
+
 .emphasis {
   font-weight: 700;
   font-size: 25px;
   color: #0dc9b9;
 }
-.monthSelect {
+.month-select {
   width: 62px;
   border: 1px solid #c9c9c9;
   box-sizing: border-box;
@@ -227,39 +252,62 @@ watch(
   color: #504e64;
   text-align: center;
   outline: none;
+  margin: 10px 0px 0px 0px;
 }
 
-.monthSelect:focus {
+.month-select:focus {
   border: 1px solid #504e64;
 }
-
-.monthSelect option {
+.year-select:focus {
+  border: 1px solid #504e64;
+}
+.month-select option .year-select option {
   color: #504e64;
 }
-
-.chartContainer {
+.year-select {
+  width: 80px;
+  border: 1px solid #c9c9c9;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 7px 3px;
+  font-weight: 400;
+  font-size: 15px;
+  color: #504e64;
+  text-align: center;
+  outline: none;
+  margin: 10px 5px 0px 0px;
+}
+.chart-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.chart {
-  width: 250px;
-  height: 250px;
+.equal-height {
+  height: 67.5px;
 }
 
-.categoryList {
+.chart {
+  width: 240px;
+  height: 240px;
+}
+
+.category-list {
   list-style: none;
   padding: 0;
-  margin: 20px 0 0 0;
   width: 100%;
   text-align: left;
 }
-.categoryList li {
+.category-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 14px 0;
+  margin: 0px 0px 15px 0px;
+  background: white;
+  height: 62px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  padding: 1rem;
 }
 .circle {
   display: inline-block;
@@ -272,11 +320,11 @@ watch(
   justify-content: center;
   align-items: center;
 }
-.categoryName {
+.category-name {
   flex-grow: 1;
   padding-left: 10px;
 }
-.categoryText {
+.category-text {
   font-size: 18px;
   color: #504e64;
 }

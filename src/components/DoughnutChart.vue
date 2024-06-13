@@ -37,12 +37,14 @@ const props = defineProps({
     required: true,
   },
 });
+
 const chartDataReady = computed(() => {
   return (
     props.chartData.labels.length > 0 &&
     props.chartData.datasets[0].data.length > 0
   );
 });
+
 watch(
   () => props.chartData,
   (newValue) => {

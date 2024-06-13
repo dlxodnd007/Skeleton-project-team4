@@ -49,7 +49,7 @@
               <div class="mb-2">
                 <label class="form-label fw-bold">수입/지출</label>
                 <div class="d-flex flex-row">
-                  <div>
+                  <div class="incomeRadio">
                     <input
                       id="income"
                       type="radio"
@@ -58,7 +58,7 @@
                     />
                     <label for="income">수입</label>
                   </div>
-                  <div>
+                  <div class="expensesRadio">
                     <input
                       id="expenses"
                       type="radio"
@@ -230,5 +230,14 @@ fetchList();
 .comfirm-button:hover,
 .close-button:hover {
   transform: scale(1.1);
+}
+.expensesRadio {
+  margin-left: 8px;
+}
+.expensesRadio input {
+  margin-right: 5px;
+}
+.incomeRadio input {
+  margin-right: 5px;
 }
 </style>

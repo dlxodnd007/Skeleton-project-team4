@@ -40,7 +40,7 @@ export const useChangeStore = defineStore('changedb', () => {
       for (let i = 0; i < user_income.data.length; i++) {
         user_income.data[i].check = '입금';
         user_income.data[i].mark = '+';
-        delete user_income.data[i].id;
+        // delete user_income.data[i].id;
         transaction.value.push(user_income.data[i]);
       }
 
@@ -51,7 +51,7 @@ export const useChangeStore = defineStore('changedb', () => {
       for (let i = 0; i < user_expenses.data.length; i++) {
         user_expenses.data[i].check = '지출';
         user_expenses.data[i].mark = '-';
-        delete user_expenses.data[i].id;
+        // d    elete user_expenses.data[i].id;
         transaction.value.push(user_expenses.data[i]);
       }
       // console.log("transaction", transaction.value);

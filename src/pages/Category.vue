@@ -7,11 +7,19 @@
     </select>
     <div class="title">가장 많은 지출을 한 카테고리는</div>
     <div class="title">
-      <span class="emphasis">{{ mostSpentCategory }}</span
+      <span class="emphasis" :style="{ color: activeColor }">{{
+        mostSpentCategory
+      }}</span
       >입니다!
     </div>
-
-    <!-- <Doughnut :data="data" :options="options" /> -->
+    <div class="chartContainer">
+      <DoughnutChart
+        :chart-data="chartData"
+        :chart-options="chartOptions"
+        class="chart"
+        :key="chartDataKey"
+      />
+    </div>
 
     <ul class="categoryList">
       <li v-for="expenses in reactiveExpensesArray" :key="expenses.id">
@@ -28,18 +36,51 @@
 <script setup>
 import { ref, reactive, watch, onMounted, computed } from 'vue';
 import { useAccountBookStore } from '@/stores/accountBook.js';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'vue-chartjs';
-import * as chartConfig from '@/chartConfig.js';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+import DoughnutChart from '@/components/DoughnutChart.vue';
 
 const accountBookStore = useAccountBookStore();
-const { fetchExpenseData, monthExpensesData } = accountBookStore;
+const { fetchExpenseData } = accountBookStore;
 
 const mostSpentCategory = ref('');
 const totalAmount = ref(0);
 const selectedMonth = ref(new Date().getMonth() + 1);
+const activeColor = ref('');
+const chartDataKey = ref(0);
+
+const chartData = reactive({
+  labels: [],
+  datasets: [
+    {
+      label: 'Data',
+      backgroundColor: [],
+      data: [],
+    },
+  ],
+});
+const chartOptions = reactive({
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  layout: {
+    padding: {
+      top: 20,
+      bottom: 20,
+    },
+  },
+  elements: {
+    arc: {
+      borderWidth: 0,
+    },
+  },
+  responsive: true,
+  // maintainAspectRatio: false,
+  animation: {
+    animateScale: true,
+    animateRotate: true,
+  },
+});
 
 const reactiveExpensesArray = reactive([
   { category: '식비', amount: 0, color: '#0DC9B9', percentage: 0 },
@@ -125,11 +166,25 @@ function updateData(month) {
       Math.round((shoppingExpenses / totalAmount.value) * 100);
     reactiveExpensesArray.find((item) => item.category === '이체').percentage =
       Math.round((transferExpenses / totalAmount.value) * 100);
+
+    chartData.labels = reactiveExpensesArray.map((item) => item.category);
+    chartData.datasets[0].data = reactiveExpensesArray.map(
+      (item) => item.amount
+    );
+    chartData.datasets[0].backgroundColor = reactiveExpensesArray.map(
+      (item) => item.color
+    );
   }
+
+  activeColor.value = reactiveExpensesArray.sort(
+    (a, b) => b.amount - a.amount
+  )[0].color;
 
   mostSpentCategory.value = reactiveExpensesArray.sort(
     (a, b) => b.amount - a.amount
   )[0].category;
+
+  chartDataKey.value += 1;
 }
 
 function changeMonth() {
@@ -154,7 +209,7 @@ watch(
   font-weight: 600;
   font-size: 20px;
   color: #504e64;
-  margin: 8px 0px;
+  margin: 8px 0px 0px 0px;
 }
 .emphasis {
   font-weight: 700;
@@ -175,13 +230,22 @@ watch(
 }
 
 .monthSelect:focus {
-  background-color: #0dc9b9;
-  border: 1px solid #0dc9b9;
-  color: white;
+  border: 1px solid #504e64;
 }
 
 .monthSelect option {
   color: #504e64;
+}
+
+.chartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart {
+  width: 250px;
+  height: 250px;
 }
 
 .categoryList {

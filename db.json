@@ -12,6 +12,12 @@
       "amount": 300000,
       "description": "용돈",
       "id": "2150"
+    },
+    {
+      "id": "64bb",
+      "date": "2024-07-01",
+      "description": "테스트1",
+      "amount": 1000
     }
   ],
   "expenses": [
